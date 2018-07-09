@@ -1,0 +1,74 @@
+@php
+    global $APPLICATION;
+    $votedFlag = $arResult["VOTE_PROP"]["VOTE_FLAG"] == 1 ? true : false;
+    $rand = $arResult["RAND"];
+@endphp
+
+<div class="main__poll__item">
+    {{-- {{ var_dump($arResult) }} --}}
+    <div class="main__poll__item__header">
+        <div class="main__poll__item__header-title">{{ $arResult['NAME'] }}</div>
+    </div>
+
+    <div class="main__poll__item__content">
+        @if ($votedFlag)
+            <div class="main__poll__item__result">
+
+                @foreach ($arResult["VAR"] as $row)
+                    <div class="main__poll__item__result__row">
+                        <figure class="main__poll__item__result__row-fill" data-result="{{ $row['PERCENT'] }}%"></figure>
+                        <div class="main__poll__item__result__row__info">
+                            <div class="main__poll__item__result__row__info-title">{{ $row['VALUE'] }}</div>
+                            <div class="main__poll__item__result__row__info-value">{{ $row['PERCENT'] }}%</div>
+                        </div>
+                    </div>
+                @endforeach
+
+            </div>
+
+            <script>
+                var rows = $('.main__poll__item__result__row-fill');
+                setTimeout(function(){
+                    rows.each(function(){
+                        var w = $(this).data('result');
+                        $(this).css('width', w);
+                    });
+                }, 1000);
+            </script>
+        @else
+            <div class="main__poll__item__voting">
+
+                <form name="vote_Form[{{ $rand }}]" method="POST" action="">
+                    <input type="hidden" name="ok_vote" value="{{ $rand }}">
+                    <input type="hidden" name="rand" value="{{ $rand }}">
+                    <input id="main__poll__submit" class="hidden" type="submit" value="{{GetMessage("DO_vote")}}" />
+
+                    @foreach ($arResult["VAR"] as $key => $row)
+                        <div class="main__poll__item__voting__row" data-choice="{{ $rand.$key }}">
+                            <div class="main__poll__item__voting__row__info">
+                                <input type="radio" class="main__poll__item__voting__input" name="mood_{{ $rand }}" value="{{ $key }}" id="{{ $rand.$key }}">
+                                <div class="main__poll__item__voting__row__info-title">{{ $row["VALUE"] }}</div>
+                            </div>
+                        </div>
+                    @endforeach
+                </form>
+
+            </div>
+
+            <script>
+                var voting = $('.main__poll__item__voting');
+                if (voting.length === 1) {
+                    var button = $('#main__poll__submit');
+                    var row = $('.main__poll__item__voting__row');
+
+                    row.on('click', function() {
+                        var choice = '#' + $(this).data('choice');
+                        $(choice).prop('checked', true);
+                        button.trigger('click');
+                    });
+                }
+            </script>
+        @endif
+    </div>
+
+</div>

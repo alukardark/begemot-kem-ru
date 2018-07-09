@@ -1,0 +1,244 @@
+.ipage .bonuses {
+    &__item {
+        @include display-flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        &__info {
+            flex-basis: 50%;
+            max-width: 50%;
+            padding-right: 50px;
+            &__head {
+                @include display-flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 30px;
+            }
+            &__period {
+                @include display-flex;
+                align-items: center;
+                i {
+                    display: block;
+                    margin-right: 10px;
+                    @extend %sprite;
+                    @extend %sprite-period-gray;
+                }
+            }
+            &__terms {
+                @include display-flex;
+                max-width: 270px;
+                font-size: 14px;
+                color: $main_red;
+                &:hover {
+                    color: $main_red;
+                    text-decoration: none;
+                }
+                i {
+                    flex-shrink: 0;
+                    display: block;
+                    margin-right: 15px;
+                    @extend %sprite;
+                    @extend %sprite-pdf;
+                }
+            }
+            &__body {
+                font-size: 14px;
+                line-height: 2;
+                margin-bottom: 30px;
+            }
+        }
+        &__booklet {
+            position: relative;
+            flex-basis: 50%;
+            max-width: 50%;
+            align-self: center;
+            .slick {
+                &-arrow {
+                    top: 50%;
+                    @include translateY(-50%);
+                    width: 30px;
+                    height: 40px;
+                    i {
+                        font-size: 30px;
+                        line-height: 40px;
+                    }
+                }
+                &-prev {
+                    left: -30px;
+                }
+                &-next {
+                    right: -30px;
+                }
+                &-slide > div {
+                    text-align: center;
+                }
+                &-dots {
+                    left: 50%;
+                    transform: translateX(-50%);
+                    bottom: -80px;
+                }
+            }
+            &__page {
+                position: relative;
+                display: inline-block;
+                width: 100%;
+                max-width: 285px;
+                height: 400px;
+                background-repeat: no-repeat;
+                background-position: center;
+                -webkit-background-size: cover;
+                background-size: cover;
+                margin: 0 auto;
+                &__wraper {
+                }
+            }
+        }
+        &__partners {
+            flex-basis: 100%;
+            max-width: 100%;
+            padding-top: 40px;
+            @include transition(opacity 300ms);
+            &.off {
+                opacity: 0;
+            }
+            &__links {
+                @include display-flex;
+                flex-wrap: wrap;
+            }
+            &__link {
+                box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+                @include display-flex;
+                justify-content: center;
+                align-items: center;
+                width: 250px;
+                height: 160px;
+                margin-right: 40px;
+                margin-bottom: 40px;
+                @include transition(all 300ms);
+                &:not(span):hover {
+                    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+                }
+                &-logo {
+                    display: block;
+                    width: 70%;
+                    height: 60%;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    -webkit-background-size: contain;
+                    background-size: contain;
+                }
+            }
+            &__text {
+                font-size: 14px;
+                line-height: 2;
+            }
+        }
+        &__addtrigger {
+            display: inline-block;
+            color: $main_red;
+            font-size: 14px;
+            &:hover {
+                text-decoration: none;
+                color: $main_red;
+            }
+            &.up {
+                i {
+                    @include rotate(-180deg);
+                }
+            }
+            i {
+                display: inline-block;
+                margin-left: 10px;
+                @include transition(all 300ms);
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .ipage .bonuses__item {
+        &__booklet {
+            &__page {
+                max-width: 230px;
+                height: 320px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .ipage .bonuses__item {
+        &__info {
+            flex-basis: 45%;
+            max-width: 45%;
+            &__head {
+                display: block;
+            }
+            &__period {
+                margin-bottom: 20px;
+            }
+            &__body {
+                line-height: 1.5;
+            }
+        }
+        &__booklet {
+            flex-basis: 55%;
+            max-width: 55%;
+        }
+        &__partners__text {
+            line-height: 1.5;
+        }
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .ipage .bonuses__item {
+        &__info {
+            order: 2;
+            flex-basis: 100%;
+            max-width: 100%;
+            padding-right: 0;
+            &__head {
+                @include display-flex;
+            }
+            &__period {
+                margin-bottom: 0;
+            }
+        }
+        &__booklet {
+            order: 1;
+            flex-basis: 100%;
+            max-width: 100%;
+            margin-bottom: 50px;
+        }
+        &__partners {
+            order: 5;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .ipage .bonuses__item {
+        &__info {
+            &__head {
+                display: block;
+            }
+            &__period {
+                margin-bottom: 20px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .ipage .bonuses__item__booklet {
+        margin-bottom: 70px;
+    }
+    .ipage .bonuses__item__partners {
+        &__links {
+            justify-content: center;
+        }
+        &__link {
+            margin-right: 0;
+        }
+    }
+}

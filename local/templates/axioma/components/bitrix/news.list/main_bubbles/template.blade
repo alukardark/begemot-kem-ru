@@ -1,0 +1,23 @@
+@unless (empty($arResult))
+
+    <div class="main__bubbles__wraper">
+        <div class="wraper_global_inner main__bubbles__header">
+            <div class="main_section_title main__bubbles-title">{{ $arResult['NAME'] }}</div>
+        </div>
+
+        <div class="main__bubbles__slider preloadopacity preloadopacity-loading">
+            @foreach($arResult['ITEMS'] as $arItem)
+                <a href="{{ $arItem['DISPLAY_PROPERTIES']['LINK']['VALUE'] }}"
+                   id="@actionEditAndDeleteIBlockElement($arItem)" class="main__bubbles__slider__item">
+                    <span class="main__bubbles__slider__item-image"
+                          style="background-image: url({{ $arItem['PREVIEW_PICTURE']['SRC'] }})"></span>
+                    <span class="main__bubbles__slider__item-text">
+                        {!! $arItem['PREVIEW_TEXT'] !!}
+                    </span>
+                </a>
+            @endforeach
+        </div>
+
+    </div>
+
+@endunless

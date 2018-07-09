@@ -1,0 +1,38 @@
+.main {
+    &__top_section {
+        //height: 500px;
+        box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+        @include display-flex;
+    }
+    &__bottom_section {
+        padding-top: 60px;
+        padding-bottom: 60px;
+        @include display-flex;
+        justify-content: space-between;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .main__top_section {
+        display: block;
+    }
+    .main__bottom_section {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 992px) {
+}
+
+@media screen and (max-width: 768px) {
+}
+
+@media screen and (max-width: 576px) {
+}
+
+@import "main/_00_sales";
+@import "main/_01_actions";
+@import "main/_02_goodsoftheweek";
+@import "main/_03_bubbles";
+@import "main/_04_news";
+@import "main/_05_poll";

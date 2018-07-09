@@ -1,0 +1,34 @@
+@unless (empty($arResult))
+
+    {{--{{dmp($arResult['MORE_PHOTO'])}}--}}
+
+    <div class="catalog__element clearfix">
+        <div class="catalog__element__image">
+            <div class="catalog__element__image__gallery preloadopacity preloadopacity-loading">
+                <a href="{{$arResult['DETAIL_PICTURE']['SRC']}}" class="catalog__element__image__gallery__item"
+                   data-fancybox="catalog__element">
+                    <img src="{{$arResult['DETAIL_PICTURE']['SRC']}}" alt="{{$arResult['NAME']}}">
+                </a>
+                @foreach($arResult['MORE_PHOTO'] as $photo)
+                    @php
+                        $thumbnail = [];
+                        //$thumbnail = bxResize($photo['ID'], $thumbSize);
+                    @endphp
+                    <a href="{{$photo['SRC']}}" class="catalog__element__image__gallery__item"
+                       data-fancybox="catalog__element">
+                        <img src="{{$photo['SRC']}}" alt="{{$arResult['NAME']}}">
+                    </a>
+                @endforeach
+            </div>
+        </div>
+
+        <div class="catalog__element__info">
+            <div class="catalog__element__info__description">{!! $arResult['DETAIL_TEXT'] !!}</div>
+
+            <a href="{{$arResult['SECTION_PAGE_URL']}}" class="catalog__element__back back__button">
+                назад
+            </a>
+        </div>
+    </div>
+
+@endunless

@@ -1,0 +1,21 @@
+.mobilephone {}
+.fancygallery {}
+.bstooltip {
+    cursor:help;
+    color: #333 !important;
+    text-decoration: underline;
+}
+.minicollapse {
+    display: block;
+    padding-bottom: 5px;
+}
+.minicollapse:focus {
+    text-decoration: underline;
+}
+.minicollapse.show,
+.minicollapse.show:focus {
+    text-decoration: none;
+}
+.minicollapse.show:hover {
+    text-decoration: underline;
+}

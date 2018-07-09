@@ -1,0 +1,241 @@
+.wraper_global {
+    &_outer {
+        position: relative;
+        padding: 0 75px;
+    }
+    &_inner {
+        position: relative;
+        padding: 0 50px;
+    }
+    &_all {
+        position: relative;
+        padding: 0 50px;
+    }
+}
+
+.main_section_title {
+    font-size: 32px;
+    font-weight: 500;
+}
+
+.in-catalog-food,
+.in-catalog-bakery,
+.in-sales,
+.in-tenants {
+    .ipage {
+        background: $light_gray;
+    }
+}
+
+.ipage {
+    padding-top: 40px;
+    padding-bottom: 130px;
+    &__breadcrumbs {
+        padding-bottom: 50px;
+        a {
+            position: relative;
+            color: $black !important;
+            font-size: 14px;
+            font-weight: 200;
+            text-decoration: none;
+            &::before {
+                position: absolute;
+                bottom: -1px;
+                left: 0;
+                content: '';
+                display: block;
+                height: 1px;
+                background: $main_red;
+                width: 0;
+                @include transition(width 300ms);
+            }
+            &:hover {
+                &::before {
+                    width: 100%;
+                }
+            }
+        }
+        & > span {
+            font-size: 14px;
+            font-weight: 200;
+            color: $main_gray;
+        }
+        &__separator {
+            font-size: 8px !important;
+            color: $main_gray2 !important;
+            margin: 0 20px;
+            position: relative;
+            top: -1px;
+        }
+    }
+    &__head {
+        &__title {
+            @include display-flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 50px;
+            h1 {
+                margin-bottom: 0;
+                margin-right: 30px;
+            }
+        }
+        &__feedback {
+            @include display-flex;
+            max-height: 45px;
+            &__text {
+                font-size: 14px;
+                max-width: 250px;
+                padding-right: 20px;
+            }
+            &__button a {
+                font-size: 14px;
+                font-weight: 500;
+            }
+        }
+    }
+    &__advanced {
+        @include display-flex;
+        justify-content: space-between;
+        &__left {
+            max-width: 650px;
+            flex-basis: 650px;
+            margin-right: 90px;
+        }
+        &__right {
+            flex-grow: 1;
+            font-size: 14px;
+        }
+        &__slider {
+            max-width: 650px;
+            .slick {
+                &-arrow {
+                    top: 50%;
+                    @include translateY(-50%);
+                    width: 40px;
+                    height: 40px;
+                    i {
+                        font-size: 30px;
+                        line-height: 40px;
+                    }
+                }
+                &-prev {
+                    left: -30px;
+                }
+                &-next {
+                    right: -30px;
+                }
+            }
+            &-item {
+                position: relative;
+                display: block;
+                width: 100%;
+                height: 500px;
+                background-repeat: no-repeat;
+                background-position: center;
+                -webkit-background-size: cover;
+                background-size: cover;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1900px) {
+    .wraper_global {
+        &_outer {
+            padding: 0 15px;
+        }
+    }
+}
+
+@media screen and (max-width: 1600px) {
+    .footer__menu__wraper {
+        max-height: 400px;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .ipage__advanced {
+        display: block;
+        &__left {
+            margin-right: 0;
+            margin-bottom: 40px;
+        }
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .wraper_global_all {
+        padding: 0 75px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .wraper_global {
+        &_inner {
+            padding: 0 25px;
+        }
+        &_all {
+            padding: 0 65px;
+        }
+    }
+    .ipage__head__feedback {
+        &__text {
+            display: none;
+        }
+        &__button a {
+            font-size: 14px;
+            font-weight: 400;
+        }
+    }
+    .ipage__advanced__slider-item {
+        height: 400px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .ipage {
+        padding-bottom: 80px;
+    }
+    .ipage__advanced__slider-item {
+        height: 300px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .wraper_global {
+        &_outer {
+            padding: 0 10px;
+        }
+        &_inner {
+            padding: 0;
+        }
+        &_all {
+            padding: 0 10px;
+        }
+    }
+    .main_section_title {
+        font-size: 27px;
+        text-align: center;
+    }
+    .ipage__head {
+        &__title {
+            display: block;
+            h1 {
+                margin: 0;
+            }
+            a {
+                width: 290px;
+            }
+        }
+        &__feedback {
+            margin-top: 40px;
+            justify-content: center;
+            &__button a {
+                font-size: 12px;
+            }
+        }
+    }
+    .ipage__advanced__slider-item {
+        height: 300px;
+    }
+}

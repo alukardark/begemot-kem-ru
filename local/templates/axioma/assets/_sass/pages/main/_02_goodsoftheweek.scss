@@ -1,0 +1,230 @@
+.main__goodsoftheweek {
+    &__wraper {
+        padding-top: 60px;
+        padding-bottom: 30px;
+    }
+    &__header {
+        margin-bottom: 20px;
+    }
+    &__slider {
+        padding: 0 30px;
+        .slick {
+            &-arrow {
+                top: 50%;
+                @include translateY(-50%);
+            }
+            &-prev {
+                left: 0;
+            }
+            &-next {
+                right: 0;
+            }
+            &-dots {
+                bottom: -20px;
+                left: 50%;
+                @include translateX(-50%);
+                li {
+                    margin: 0 10px !important;
+                }
+            }
+            &-slide {
+                & > div {
+                    text-align: center;
+                }
+            }
+        }
+        &__item {
+            box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+            position: relative;
+            max-width: 385px;
+            height: 430px;
+            margin: 20px;
+            &__info {
+                height: 100%;
+                padding-top: 50px;
+                padding-left: 30px;
+                padding-right: 20px;
+                text-align: left;
+                &-type {
+                    font-size: 16px;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    color: $main_orange;
+                    margin-bottom: 10px;
+                    max-width: 220px;
+                }
+                &-title {
+                    font-size: 16px;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    color: $main_black;
+                    margin-bottom: 15px;
+                    max-width: 220px;
+                }
+                &-description {
+                    font-size: 12px;
+                    line-height: 1.2;
+                    height: 75px;
+                    margin-bottom: 15px;
+                    max-width: 220px;
+                }
+                &-baseprice {
+                    font-size: 20px;
+                    color: $main_black;
+                    text-decoration: line-through;
+                    position: absolute;
+                    bottom: 160px;
+                }
+                &-discountprice {
+                    position: absolute;
+                    bottom: 100px;
+                    span {
+                        color: $main_orange;
+                    }
+                    &-1 {
+                        font-family: Formular, sans-serif;
+                        font-size: 56px;
+                        font-weight: 700;
+                        line-height: 1;
+                    }
+                    &-2 {
+                        position: absolute;
+                        top: 0;
+                        font-family: Formular, sans-serif;
+                        font-size: 20px;
+                        font-weight: 700;
+                    }
+                    &-currency {
+                        font-size: 24px;
+                    }
+                }
+                &-daterange {
+                    font-size: 12px;
+                    font-weight: 500;
+                    position: absolute;
+                    bottom: 50px;
+                    color: $main_black;
+                }
+            }
+            &__image {
+                position: absolute;
+                bottom: 60px;
+                right: 20px;
+                width: 150px;
+                height: 150px;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: contain;
+            }
+            &__badge {
+                position: absolute;
+                @include display-flex;
+                justify-content: center;
+                align-items: center;
+                top: 50px;
+                right: 20px;
+                @extend %sprite;
+                @extend %sprite-orange-badge-small;
+                font-size: 14px;
+                font-weight: 700;
+                color: #fff;
+                & > span {
+                    padding-bottom: 10px;
+                }
+                &-discount {
+                    font-size: 23px;
+                    letter-spacing: 1px;
+                }
+                &-special {
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1900px) {
+    .main__goodsoftheweek__slider__item {
+        max-width: 345px;
+    }
+}
+
+@media screen and (max-width: 1600px) {
+}
+
+@media screen and (max-width: 1400px) {
+}
+
+@media screen and (max-width: 1200px) {
+}
+
+@media screen and (max-width: 992px) {
+    .main__goodsoftheweek__slider__item {
+        max-width: 300px;
+        &__info {
+            &-type,
+            &-title,
+            &-description {
+                max-width: 180px;
+            }
+        }
+        &__image {
+            width: 130px;
+            height: 130px;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .main__goodsoftheweek__wraper {
+        padding-bottom: 60px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .main__goodsoftheweek__slider {
+        padding: 0;
+        &__item {
+            height: 300px;
+            &__info {
+                padding-top: 20px;
+                &-description {
+                    height: 60px;
+                }
+                &-baseprice {
+                    bottom: 110px;
+                }
+                &-discountprice {
+                    bottom: 50px;
+                }
+                &-daterange {
+                    bottom: 20px;
+                }
+            }
+            &__image {
+                bottom: 30px;
+            }
+            &__badge {
+                top: 10px;
+                right: 10px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .main__goodsoftheweek__slider__item {
+        max-width: 260px;
+        &__info {
+            padding-left: 20px;
+            &-type,
+            &-title {
+                font-size: 14px;
+            }
+        }
+        &__image {
+            width: 100px;
+            height: 100px;
+        }
+    }
+}

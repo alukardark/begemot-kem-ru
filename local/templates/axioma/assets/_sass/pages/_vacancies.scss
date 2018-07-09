@@ -1,0 +1,242 @@
+.ipage .vacancies {
+    @include display-flex;
+    &__sidebar {
+        position: relative;
+        flex-basis: 30%;
+        max-width: 30%;
+        padding-top: 50px;
+        padding-right: 65px;
+        &-intro {
+            font-size: 14px;
+            font-weight: 200;
+            margin-bottom: 30px;
+        }
+        &__filter {
+            margin-bottom: 40px;
+            &__item {
+                &:not(:last-child) {
+                    margin-bottom: 20px;
+                }
+                .dropdown {
+                    &__button {
+                        max-width: 100%;
+                        background: transparent;
+                        border: 1px solid $main_red;
+                        &-arrow {
+                            border: transparent;
+                        }
+                        &:hover {
+                            background: $light_gray;
+                        }
+                        &.disable {
+                            background: $light_gray2;
+                            border-color: $light_gray2;
+                            opacity: 0.5;
+                            cursor: default;
+                            pointer-events: none;
+                        }
+                    }
+                    &__menu {
+                        max-width: 100%;
+                        &-item.active {
+                            cursor: default;
+                            pointer-events: none;
+                        }
+                    }
+                }
+            }
+        }
+        &-text {
+            font-size: 14px;
+            font-weight: 200;
+            a {
+                color: $main_red;
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+    &__body {
+        position: relative;
+        box-shadow: -15px 0px 10px -10px rgba(0, 0, 0, 0.1);
+        flex-basis: 70%;
+        max-width: 70%;
+        padding: 50px 0 50px 65px;
+    }
+    &__item {
+        border: 1px solid $light_gray;
+        -webkit-border-radius: 25px;
+        -moz-border-radius: 25px;
+        border-radius: 25px;
+        margin-bottom: 25px;
+        @include transition(background 300ms, opacity 300ms);
+        &:nth-child(odd) {
+            background: $light_gray;
+        }
+        &:hover {
+            background: $light_gray2;
+        }
+        &.disable {
+            opacity: 0;
+        }
+        &__control {
+            position: relative;
+            @include display-flex;
+            flex-wrap: wrap;
+            padding: 50px 120px 30px 160px;
+            cursor: pointer;
+            @include transition(padding 300ms);
+            &.collapsed {
+                padding: 30px 120px 30px 160px;
+                .vacancies__item__control-name {
+                    color: $main_black;
+                }
+            }
+            &-name {
+                display: inline-block;
+                font-size: 20px;
+                font-weight: 600;
+                color: $main_red;
+                text-decoration: underline;
+                flex-basis: 70%;
+                margin-bottom: 15px;
+                @include transition(all 300ms);
+            }
+            &-salary {
+                display: inline-block;
+                flex-basis: 30%;
+                font-size: 20px;
+                font-weight: 600;
+                color: $main_red;
+            }
+            &-city {
+            }
+            &-address {
+            }
+        }
+        &__content {
+            padding: 0 120px 0 160px;
+            &__wraper {
+                margin-bottom: 50px;
+            }
+            &__send {
+                @include display-flex;
+                justify-content: flex-end;
+            }
+            &__dummy {
+                height: 50px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1600px) {
+    .ipage .vacancies__item {
+        &__control {
+            padding: 50px 100px 30px;
+            &.collapsed {
+                padding: 30px 100px;
+            }
+        }
+        &__content {
+            padding: 0 100px;
+        }
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .ipage .vacancies__item {
+        &__control {
+            padding: 50px 60px 30px;
+            &.collapsed {
+                padding: 30px 60px;
+            }
+        }
+        &__content {
+            padding: 0 60px;
+        }
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .ipage .vacancies {
+        display: block;
+        &__sidebar {
+            flex-basis: 100%;
+            max-width: 100%;
+            @include display-flex;
+            justify-content: space-between;
+            padding: 0;
+            margin-bottom: 40px;
+            &-intro {
+                display: none;
+            }
+            &__filter {
+                order: 2;
+                margin-bottom: 0;
+            }
+            &-text {
+                order: 1;
+                max-width: 500px;
+                padding-right: 20px;
+            }
+        }
+        &__body {
+            flex-basis: 100%;
+            max-width: 100%;
+            padding: 0;
+            box-shadow: none;
+        }
+    }
+;
+}
+
+@media screen and (max-width: 992px) {
+    .ipage .vacancies__sidebar__filter {
+        max-width: 290px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .ipage .vacancies__item {
+        &__control {
+            padding: 50px 30px 30px;
+            &.collapsed {
+                padding: 30px;
+            }
+        }
+        &__content {
+            padding: 0 30px;
+        }
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .ipage .vacancies__sidebar {
+        flex-wrap: wrap;
+        justify-content: center;
+        &-text {
+            flex-basis: 320px;
+            max-width: 320px;
+            padding-right: 0;
+            margin-bottom: 30px;
+        }
+        &__filter {
+            flex-basis: 260px;
+            max-width: 260px;
+        }
+    }
+    .ipage .vacancies__item__control {
+        &-name {
+            flex-basis: 100%;
+            max-width: 100%;
+            margin-bottom: 5px;
+        }
+        &-salary {
+            padding-top: 15px;
+            flex-basis: 100%;
+            order: 5;
+        }
+    }
+}

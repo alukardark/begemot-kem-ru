@@ -1,0 +1,33 @@
+@unless (empty($arResult))
+
+    <div class="actions__list">
+
+        @foreach($arResult['ITEMS'] as $arItem)
+            <div class="actions__list__item__wraper" data-aos="fade">
+                <a id="@actionEditAndDeleteIBlockElement($arItem)" href="{{ $arItem['DETAIL_PAGE_URL'] }}"
+                   class="actions__list__item">
+                <span class="actions__list__item__image"
+                      style="background-image: url({{ $arItem['PREVIEW_PICTURE']['SRC'] or NO_IMAGE }})"
+                >
+                </span>
+                    <span class="actions__list__item__info">
+                    <span class="actions__list__item-title">{{ $arItem['NAME'] }}</span><br>
+                        @if(!empty($arItem['DISPLAY_PROPERTIES']['DATE_RANGE']['VALUE']))
+                            <span class="actions__list__item-period">
+                            <i></i>
+                                {{ $arItem['DISPLAY_PROPERTIES']['DATE_RANGE']['VALUE'] }}
+                        </span>
+                        @endif
+                        <span class="actions__list__item-text">{!! $arItem['PREVIEW_TEXT'] !!}</span>
+                </span>
+                </a>
+            </div>
+        @endforeach
+
+    </div>
+
+    @if($arParams["DISPLAY_BOTTOM_PAGER"])
+        {!! $arResult["NAV_STRING"] !!}
+    @endif
+
+@endunless

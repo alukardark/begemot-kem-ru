@@ -1,0 +1,23 @@
+.ipage .catalog {
+    &__flexfix {
+        max-width: 370px;
+        flex-basis: 370px;
+        height: 0;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+}
+
+@media screen and (max-width: 992px) {
+}
+
+@media screen and (max-width: 768px) {
+}
+
+@media screen and (max-width: 576px) {
+}
+
+@import "catalog/_sections";
+@import "catalog/_section";
+@import "catalog/_detail";

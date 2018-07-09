@@ -1,0 +1,59 @@
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {
+        @content;
+    }
+    @-moz-keyframes #{$name} {
+        @content;
+    }
+    @-ms-keyframes #{$name} {
+        @content;
+    }
+    @keyframes #{$name} {
+        @content;
+    }
+}
+
+@mixin animation ($stuff) {
+    -webkit-animation: $stuff;
+    -moz-animation: $stuff;
+    -ms-animation: $stuff;
+    animation: $stuff;
+}
+
+@include keyframes(infinite-spin) {
+    0% {
+        @include rotate(0deg);
+    }
+    100% {
+        @include rotate(360deg);
+    }
+}
+
+@include keyframes(spin-zoomin) {
+    0% {
+        @include transform(scale(1) rotate(0deg));
+        opacity: 1;
+    }
+    100% {
+        @include transform(scale(2) rotate(90deg));
+        opacity: 0;
+    }
+}
+
+@include keyframes(cube-shake) {
+    0% {
+        @include transform(translate(0, 0) rotate(0deg));
+    }
+    25% {
+        @include transform(translate(0, -50px) rotate(90deg));
+    }
+    50% {
+        @include transform(translate(0, 0) rotate(180deg));
+    }
+    75% {
+        @include transform(translate(0, 50px) rotate(270deg));
+    }
+    100% {
+        @include transform(translate(0, 0) rotate(360deg));
+    }
+}

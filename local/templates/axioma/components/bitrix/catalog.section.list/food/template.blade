@@ -1,0 +1,25 @@
+@unless (empty($arResult))
+
+    <div class="catalog__sections">
+
+        @foreach ($arResult['SECTIONS'] as $arSection)
+            @continue($arSection['RELATIVE_DEPTH_LEVEL'] > 1)
+
+            <div class="catalog__sections__item__wraper" data-aos="fade">
+                <a id="@actionEditAndDeleteIBlockSection($arSection)" class="catalog__sections__item"
+                   href="{{$arSection['SECTION_PAGE_URL']}}"
+                >
+                <span class="catalog__sections__item-image"
+                      style="background-image: url({{ $arSection['PICTURE']['SRC'] }})"
+                ></span>
+                    <span class="catalog__sections__item-title">{{ $arSection['NAME'] }}</span>
+                </a>
+            </div>
+        @endforeach
+
+        <div class="catalog__flexfix"></div>
+        <div class="catalog__flexfix"></div>
+        <div class="catalog__flexfix"></div>
+    </div>
+
+@endunless

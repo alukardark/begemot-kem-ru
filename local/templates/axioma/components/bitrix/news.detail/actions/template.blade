@@ -1,0 +1,53 @@
+@unless (empty($arResult))
+
+    <div class="actions__detail clearfix">
+
+        <div class="actions__detail__gallery preloadopacity preloadopacity-loading">
+            <a href="{{ $arResult['DETAIL_PICTURE']['SRC'] }}" class="actions__detail__gallery__item"
+               style="background-image: url({{ $arResult['PREVIEW_PICTURE']['SRC'] or NO_IMAGE }})"
+               data-fancybox="{{ $arResult['CODE'] }}"
+            >
+                <span class="gallery-item-overlay"></span>
+            </a>
+            @foreach($arResult['MORE_PHOTO'] as $image)
+                <a href="{{ $image }}" class="actions__detail__gallery__item"
+                   style="background-image: url({{ $image }})"
+                   data-fancybox="{{ $arResult['CODE'] }}"
+                >
+                    <span class="gallery-item-overlay"></span>
+                </a>
+            @endforeach
+        </div>
+
+        <div class="actions__detail__info" data-aos="fade" data-aos-delay="300">
+            <span class="actions__detail-period">
+                <i></i>
+                {{ $arResult['DISPLAY_PROPERTIES']['DATE_RANGE']['VALUE'] }}
+            </span>
+
+            <span class="actions__detail-text">
+                {!! $arResult['DETAIL_TEXT'] !!}
+            </span>
+
+            <div class="actions__detail__info__footer">
+                <a href="{{ $arResult['LIST_PAGE_URL'] }}"
+                   class="g-btn g-btn-rounded g-btn-transparent actions__detail-back back__button">
+                    Назад
+                </a>
+
+                <a href="#form_action_member" class="fancymodal-call g-btn g-btn-rounded g-btn-red actions__detail-getin">
+                    Стать участником акции
+                </a>
+                <? Axi\Helpers::GF('_forms/action_member') ?>
+
+                <a href="{{ $arResult['DISPLAY_PROPERTIES']['ACTION_TERMS']['FILE_VALUE']['SRC'] }}" target="_blank"
+                   class="actions__detail-terms">
+                    <i></i>
+                    <span>Посмотреть условия акции</span>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+@endunless

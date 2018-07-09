@@ -1,0 +1,11 @@
+/bitrix/*
+!/bitrix/modules/altasib.simplevote
+!/bitrix/modules/artamonov.api
+!/bitrix/modules/ws.projectsettings
+/upload
+!/upload/_base
+/.sass-cache
+/.idea
+/local/templates/axioma/assets/modules
+/local/composer/vendor
+/pipi

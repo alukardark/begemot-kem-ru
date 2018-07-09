@@ -1,0 +1,51 @@
+@unless (empty($arResult))
+
+    <div class="achievements">
+
+        <div class="achievements__sidebar">
+            <div class="achievements__sidebar__head preloadopacity preloadopacity-loading">
+                @foreach($arResult['ITEMS'] as $arItem)
+                    <a href="#y-{{ $arItem['NAME'] }}" id="a-y-{{ $arItem['NAME'] }}" class="navlink">
+                        {{ $arItem['NAME'] }}
+                    </a>
+                @endforeach
+            </div>
+
+            <div class="achievements__sidebar__content">
+                @foreach($arResult['ITEMS'] as $arItem)
+                    <div id="@actionEditAndDeleteIBlockElement($arItem)" class="achievements__sidebar__item" data-aos="fade">
+                        <span>{{ $arItem['NAME'] }}</span>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+
+        <div class="achievements__body">
+            <div class="achievements__body__head" data-aos="fade">
+                {!! \Axi\Helpers::GT('achievements_text') !!}
+            </div>
+
+            <div class="achievements__body__content">
+                @foreach($arResult['ITEMS'] as $arItem)
+                    <div id="y-{{ $arItem['NAME'] }}" class="achievements__body__item preloadopacity preloadopacity-loading">
+                        @foreach($arItem['GALLERY'] as $image)
+                            <div class="achievements__body__image__wraper" data-aos="fade">
+                                <a href="{{ $image['SRC'] }}"
+                                   data-fancybox="g-{{ $arItem['NAME'] }}" data-caption="{{ $image['DESCRIPTION'] }}"
+                                   class="achievements__body__image" style="background-image: url({{ $image['SRC'] }})"
+                                >
+                                    <span class="gallery-item-overlay"></span>
+                                </a>
+                                <span class="achievements__body__image-text">
+                                    {{ $image['DESCRIPTION'] }}
+                                </span>
+                            </div>
+                        @endforeach
+                    </div>
+                @endforeach
+            </div>
+        </div>
+
+    </div>
+
+@endunless

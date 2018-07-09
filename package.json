@@ -1,0 +1,24 @@
+{
+  "name": "BEGEMOT-KEM",
+  "version": "1.0.0",
+  "main": "index.php",
+  "author": "BS",
+  "license": "MIT",
+  "dependencies": {
+    "@fancyapps/fancybox": "^3.2.5",
+    "aos": "^2.2.0",
+    "bootstrap": "^4.0.0",
+    "font-awesome": "^4.7.0",
+    "inputmask": "^3.3.11",
+    "ionicons": "^2",
+    "isotope-layout": "^3.0.4",
+    "jquery": "^3.2.1",
+    "jquery.maskedinput": "^1.4.1",
+    "malihu-custom-scrollbar-plugin": "^3.1.5",
+    "popper.js": "^1.12.9",
+    "selectric": "^1.13.0",
+    "skrollr": "^0.6.26",
+    "slick-carousel": "^1.8.1",
+    "waitMe": "https://github.com/vadimsva/waitMe.git"
+  }
+}

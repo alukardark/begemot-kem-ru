@@ -1,0 +1,54 @@
+.main__bubbles__slider__item-text {
+    padding: 20px;
+    padding-left: 26px;
+}
+
+@media only screen and (max-width: 1920px) {
+    .hidden-max {
+        display: none !important
+    }
+}
+
+@media only screen and (max-width: 1600px) {
+    .hidden-xxl {
+        display: none !important
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .hidden-xl {
+        display: none !important
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .hidden-lg {
+        display: none !important
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .hidden-md {
+        display: none !important
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .hidden-sm {
+        display: none !important
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .hidden-xs {
+        display: none !important
+    }
+}
+
+.ipage .bonuses__item__info__terms {
+    font-weight: 400;
+}
+
+.ipage .bonuses__item__addtrigger {
+    font-size: 16px;
+}

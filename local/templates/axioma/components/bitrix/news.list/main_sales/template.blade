@@ -1,0 +1,59 @@
+@unless (empty($arResult))
+
+    <div class="wraper_global_inner main__sales__wraper preloadopacity preloadopacity-loading">
+
+        @foreach($arResult['ITEMS'] as $arItem)
+            @php
+                $properties = $arItem['DISPLAY_PROPERTIES'];
+                $mainPrice = '';
+                if (!empty($properties['DISCOUNT_PRICE']['VALUE'])) {
+                    $mainPrice = $properties['DISCOUNT_PRICE']['VALUE'];
+                } else {
+                    $mainPrice = $properties['BASE_PRICE']['VALUE'];
+                }
+                list($dPrice_1, $dPrice_2) = explode(',', $mainPrice);
+            @endphp
+
+            <a href="/sales/" id="@actionEditAndDeleteIBlockElement($arItem)" class="main__sales__item">
+                <span class="main__sales__item__image"
+                      style="background-image: url({{ $arItem['DETAIL_PICTURE']['SRC'] or NO_IMAGE }})"></span>
+
+                <span class="main__sales__item__info">
+                    <span class="main__sales__item__info-type">{{ $properties['PRODUCT_TYPE']['VALUE'] }}</span>
+                    <span class="main__sales__item__info-title">{{ $arItem['NAME'] }}</span>
+
+                    @if(!empty($properties['DISCOUNT_PRICE']['VALUE']))
+                        <span class="main__sales__item__info-baseprice">{{ $properties['BASE_PRICE']['VALUE'] }}</span>
+                    @endif
+
+                    <span class="main__sales__item__info-discountprice">
+                        <span class="main__sales__item__info-discountprice-1">{{ $dPrice_1 }}</span>
+                        <span class="main__sales__item__info-discountprice-2">{{ $dPrice_2 }}</span>
+                        <span class="main__sales__item__info-discountprice-currency"><i class="fa fa-rub"></i></span>
+                    </span>
+
+                    <span class="main__sales__item__info-daterange">{{ $properties['DATE_RANGE']['VALUE'] }}</span>
+                </span>
+
+                @if(!empty($properties['DISCOUNT_PRICE']['VALUE']) || $properties['SPECIAL_PRICE']['VALUE'] == 'Y')
+                    <span class="main__sales__item__badge">
+                        @if($properties['SPECIAL_PRICE']['VALUE'] == 'Y')
+                            <span class="main__sales__item__badge-special">
+                                СПЕЦ<br>ЦЕНА!
+                            </span>
+                        @else
+                            <span>
+                                Скидка<br>
+                                <span class="main__sales__item__badge-discount">
+                                    {{ $properties['DISCOUNT_PERCENT']['VALUE'] }}%
+                                </span>
+                            </span>
+                        @endif
+                    </span>
+                @endif
+            </a>
+        @endforeach
+
+    </div>
+
+@endunless

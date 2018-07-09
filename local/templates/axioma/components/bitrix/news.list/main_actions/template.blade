@@ -1,0 +1,23 @@
+@unless (empty($arResult))
+
+    <div class="wraper_global_all main__actions__wraper">
+        <div class="main__actions__header">
+            <div class="main_section_title main__actions-title">{{ $arResult['NAME'] }}</div>
+            <a href="{{ $arResult['LIST_PAGE_URL'] }}" class="main__actions-all g-underline">Все акции</a>
+        </div>
+
+        <div class="main__actions__slider preloadopacity preloadopacity-loading">
+            @foreach($arResult['ITEMS'] as $arItem)
+                <a href="{{ $arItem['DETAIL_PAGE_URL'] }}" id="@actionEditAndDeleteIBlockElement($arItem)"
+                   class="main__actions__slider__item">
+                    <span class="main__actions__slider__item-image"
+                          style="background-image: url({{ $arItem['PREVIEW_PICTURE']['SRC'] }})"
+                    ></span>
+                    <span class="main__actions__slider__item-title">{{ $arItem['NAME'] }}</span>
+                </a>
+            @endforeach
+        </div>
+
+    </div>
+
+@endunless

@@ -1,0 +1,29 @@
+<?
+$MESS['ALTASIB_IS'] = "Магазин готовых решений для 1С-Битрикс";
+$MESS['BASE'] = "Место хранения сообщений";
+$MESS['TYPE'] = "Тип информационного блока";
+$MESS['IBLOCK'] = "ID информационного блока";
+$MESS['SECTION'] = "Раздел информационного блока";
+$MESS['COLOR'] = "Цвет шкалы голосования";
+$MESS['WIDTH'] = "Ширина в % от страницы";
+$MESS['VOTE_LIST'] = "Над шкалой";
+$MESS['VOTE_COLUMNS'] = "Справа от шалы";
+$MESS['VOTE_POSITION'] = "Расположение результатов";
+$MESS['ALL_SECTION'] = "Все разделы";
+$MESS['YES'] = "Да";
+$MESS['NO'] = "Нет";
+$MESS['SHOW_IMAGE'] = "Показывать анонс и его картинку?";
+$MESS['STRING_RES'] = "Заголовок результатов";
+$MESS["T_IBLOCK_DESC_LIST_CONT"] = "Количество результатов на странице";
+$MESS["T_IBLOCK_DESC_PAGER_TITLE_PAGE"] = "Страница";
+$MESS["T_IBLOCK_DESC_TOP_PAGER"] = "Выводить над списком";
+$MESS["T_IBLOCK_DESC_BOTTOM_PAGER"] = "Выводить под списком";
+$MESS["PAGER_SETTINGS"] = "Настройки постраничной навигации";
+$MESS["CP_BN_PAGER_SHOW_ALL"] = "Показывать кнопку все";
+$MESS['VARIANT_IMAGE_POSITION'] = "Показывать картинки вариантов ответа";
+$MESS['DONT_SHOW'] = "Не показывать";
+$MESS['TOP'] = "Cверху";
+$MESS['RIGHT'] = "Справа";
+$MESS['SCALE_HEIGHT'] = "Высота графиков в пикселях";
+$MESS['SHOW_VAR'] = "Показывать варианты ответов голосования";
+?>

@@ -1,0 +1,34 @@
+@unless (empty($arResult))
+
+    <div class="news__list">
+
+        @foreach($arResult['ITEMS'] as $arItem)
+            <div class="news__list__item__wraper" data-aos="fade">
+                <a id="@actionEditAndDeleteIBlockElement($arItem)" href="{{ $arItem['DETAIL_PAGE_URL'] }}"
+                   class="news__list__item">
+                    <span class="news__list__item__image"
+                          style="background-image: url({{ $arItem['PREVIEW_PICTURE']['SRC'] or NO_IMAGE }})"
+                    >
+                        <span class="news__list__item-date">{{ $arItem['DISPLAY_ACTIVE_FROM'] }}</span>
+                    </span>
+                    <span class="news__list__item__info">
+                        <span class="news__list__item-title">{{ $arItem['NAME'] }}</span><br>
+                        @if($arItem['SHOW_COUNTER'] > 0)
+                            <span class="news__list__item-counter">
+                                Прочитано: {{ $arItem['SHOW_COUNTER'] }}
+                                {{ wordPlural($arItem['SHOW_COUNTER'], ['раз', 'раза', 'раз']) }}
+                            </span>
+                        @endif
+                        <span class="news__list__item-text">{!! $arItem['PREVIEW_TEXT'] !!}</span>
+                    </span>
+                </a>
+            </div>
+        @endforeach
+
+    </div>
+
+    @if($arParams["DISPLAY_BOTTOM_PAGER"])
+        {!! $arResult["NAV_STRING"] !!}
+    @endif
+
+@endunless

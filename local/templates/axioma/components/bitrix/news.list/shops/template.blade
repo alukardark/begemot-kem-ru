@@ -1,0 +1,155 @@
+@unless (empty($arResult))
+
+    <div class="shops__wraper">
+
+        <div class="shops__cities">
+            @foreach($arResult['ITEMS'] as $cityName => $item)
+                <a href="#" class="shops__cities__item {{ $cityName == $GLOBALS['CURRENT_CITY'] ? 'selected' : '' }}"
+                   data-city="{{ $cityName }}"
+                   data-district=""
+                >
+                    <span class="shops__cities__item-name">{{ $cityName }}</span>
+                    <span class="shops__cities__item-badge">{{ $item['COUNT'] }}</span>
+                </a>
+            @endforeach
+        </div>
+
+        <div class="shops__workarea">
+
+            <div id="shops_control" class="shops__control">
+                @foreach($arResult['ITEMS'] as $cityName => $item)
+                    <div class="shops__control__city {{ $cityName == $arResult['CURRENT_CITY'] ? 'show' : '' }}"
+                         data-city="{{ $cityName }}"
+                    >
+                        @if(isset($item['DISTRICTS']))
+                            @php
+                                $allDistrictsCount = 0;
+                                foreach ($item['DISTRICTS'] as $dCount) {
+                                    $allDistrictsCount += $dCount;
+                                }
+                            @endphp
+                            <div class="dropdown shops__control__city__districts">
+                                <div class="dropdown__button"
+                                     data-toggle="dropdown"
+                                     role="button" aria-expanded="false"
+                                >
+                                    <div class="dropdown__content">
+                                        <span class="dropdown__content-text">Все районы</span>
+                                        <span class="dropdown__content-count">{{ $allDistrictsCount }}</span>
+                                    </div>
+                                    <div class="dropdown__button-arrow"><i class="ion-ios-arrow-down"></i></div>
+                                </div>
+                                <div class="dropdown-menu dropdown__menu">
+                                    <div class="dropdown__menu-item active" data-district="">
+                                        <div class="dropdown__content">
+                                            <span class="dropdown__content-text">Все районы</span>
+                                            <span class="dropdown__content-count">{{ $allDistrictsCount }}</span>
+                                        </div>
+                                    </div>
+                                    @foreach($item['DISTRICTS'] as $district => $districtCount)
+                                        <div class="dropdown__menu-item"  data-district="{{ $district }}">
+                                            <div class="dropdown__content">
+                                                <span class="dropdown__content-text">{{ $district }}</span>
+                                                <span class="dropdown__content-count">{{ $districtCount }}</span>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                            <div class="shops__control__city__districts__placeholder"></div>
+                        @endif
+
+                        <div class="shops__control__city__wraper">
+                            @foreach($item['SHOPS'] as $shop)
+                                @php
+                                    list($lat, $lng) = array_map('trim', explode(',', $shop['DISPLAY_PROPERTIES']['COORDINATES']['VALUE']));
+                                    $activeFeatures = $shop['DISPLAY_PROPERTIES']['FEATURES']['VALUE_XML_ID'];
+                                    $featureText = [];
+                                @endphp
+                                <div class="shops__control__city__item"
+                                     data-city="{{ $cityName }}"
+                                     data-district="{{ $shop['DISPLAY_PROPERTIES']['DISTRICT']['VALUE'] }}"
+                                >
+                                    <div class="shops__control__city__item__control collapsed" role="button"
+                                         aria-expanded="false"
+                                         data-toggle="collapse"
+                                         data-target="#city-{{ $loop->parent->index }}-collapse-{{ $loop->index }}"
+                                         data-lat="{{ $lat }}"
+                                         data-lng="{{ $lng }}"
+                                         data-city="{{ $cityName }}"
+                                         data-name="{{ $shop['NAME'] }}"
+                                         data-district="{{ $shop['DISPLAY_PROPERTIES']['DISTRICT']['VALUE'] }}"
+                                         data-address="{{ $shop['DISPLAY_PROPERTIES']['ADDRESS']['VALUE'] }}"
+                                    >
+                                        <div class="shops__control__city__item-arrow"><i class="ion-ios-arrow-up"></i>
+                                        </div>
+                                        <div class="shops__control__city__item-title">
+                                            {{ $shop['DISPLAY_PROPERTIES']['ADDRESS']['VALUE'] }}
+                                        </div>
+                                    </div>
+                                    <div id="city-{{ $loop->parent->index }}-collapse-{{ $loop->index }}"
+                                         class="shops__control__city__item__content collapse"
+                                         data-parent="#shops_control"
+                                    >
+                                        <div class="shops__control__city__item-phone">
+                                            <i class="ion-ios-telephone"></i>
+                                            <span class="mobilephone">{{ $shop['DISPLAY_PROPERTIES']['PHONE']['VALUE'] }}</span>
+                                        </div>
+                                        @if($shop['DISPLAY_PROPERTIES']['PHONE_ADD']['VALUE'])
+                                            <div class="shops__control__city__item-phoneadd">
+                                                <i class="ion-ios-telephone"></i>
+                                                <span class="mobilephone">{{ $shop['DISPLAY_PROPERTIES']['PHONE_ADD']['VALUE'] }}</span>
+                                            </div>
+                                        @endif
+                                        @if($shop['DISPLAY_PROPERTIES']['WORKTIME']['VALUE'])
+                                            <div class="shops__control__city__item-worktime">
+                                                <i class="ion-ios-clock"></i>
+                                                <span>{{ $shop['DISPLAY_PROPERTIES']['WORKTIME']['VALUE'] }}</span>
+                                            </div>
+                                        @endif
+
+                                        <div class="shops__control__city__item__features">
+                                            @foreach($arResult['FEATURES'] as $feature)
+                                                @php
+                                                    if (in_array($feature['XML_ID'], $activeFeatures)) $featureText[] = $feature['VALUE'];
+                                                @endphp
+                                                <div class="shops__control__city__item-feature {{ $feature['XML_ID'] }}
+                                                {{ in_array($feature['XML_ID'], $activeFeatures) ? 'active' : '' }}"
+                                                     title="{{ $feature['VALUE'] }}"
+                                                >
+                                                    <i></i>
+                                                </div>
+                                            @endforeach
+                                            <div class="shops__control__city__item__features-text">
+                                                {{ axi_mb_ucfirst(implode(', ', $featureText), 'в наличии') }}
+                                            </div>
+                                        </div>
+
+                                        @if($shop['DISPLAY_PROPERTIES']['GALLERY'])
+                                            <div class="shops__control__city__item__gallery">
+                                                @foreach($shop['GALLERY'] as $image)
+                                                    <a href="{{ $image }}"
+                                                       class="shops__control__city__item__gallery-item"
+                                                       data-fancybox="city-{{ $loop->parent->parent->index }}-collapse-{{ $loop->parent->index }}"
+                                                       style="background-image: url({{ $image }})">
+                                                        <span class="gallery-item-overlay"></span>
+                                                    </a>
+                                                @endforeach
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+
+            <div class="shops__map">
+                <div id="shops_map" data-current-city="{{ $arResult['CURRENT_CITY'] }}"></div>
+            </div>
+
+        </div>
+
+    </div>
+@endunless

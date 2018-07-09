@@ -1,0 +1,132 @@
+$row_height: 60px;
+
+.main__poll {
+    flex-basis: 35%;
+    max-width: 35%;
+    &__wraper {
+    }
+    &__item {
+        &__header {
+            padding-top: 10px;
+            padding-bottom: 25px;
+            &-title {
+                font-size: 20px;
+            }
+        }
+        &__content {
+        }
+        &__result {
+            &__row {
+                position: relative;
+                width: 100%;
+                height: $row_height;
+                border: 1px solid $main_green;
+                background: #fff;
+                margin-bottom: 5px;
+                &-fill {
+                    position: absolute;
+                    top: -1px;
+                    left: 0;
+                    width: 0;
+                    height: $row_height;
+                    background: $main_green;
+                    @include transition(width 1200ms);
+                }
+                &__info {
+                    position: relative;
+                    z-index: 5;
+                    height: 100%;
+                    @include display-flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    &-title {
+                        width: 100%;
+                        display: block;
+                        font-size: 15px;
+                        padding-left: 40px;
+                    }
+                    &-value {
+                        display: block;
+                        font-size: 15px;
+                        min-width: 65px;
+                        padding-right: 10px;
+                    }
+                }
+            }
+        }
+        &__voting {
+            &__input {
+                display: none;
+            }
+            &__row {
+                position: relative;
+                width: 100%;
+                height: $row_height;
+                border: 1px solid $main_gray2;
+                background: #fff;
+                margin-bottom: 5px;
+                cursor: pointer;
+                @include transition(all 300ms);
+                &:hover {
+                    border: 1px solid $main_green;
+                    background: $main_green;
+                }
+                &__info {
+                    position: relative;
+                    z-index: 5;
+                    height: 100%;
+                    @include display-flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    &-title {
+                        width: 100%;
+                        display: block;
+                        font-size: 15px;
+                        padding-left: 40px;
+                        label {
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 1900px) {
+}
+
+@media screen and (max-width: 1600px) {
+}
+
+@media screen and (max-width: 1400px) {
+}
+
+@media screen and (max-width: 1200px) {
+    .main__poll {
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 992px) {
+}
+
+@media screen and (max-width: 768px) {
+}
+
+@media screen and (max-width: 576px) {
+    .main__poll__item__header-title {
+        text-align: center;
+        font-size: 18px;
+    }
+    .main__poll__item__voting__row__info-title,
+    .main__poll__item__result__row__info-title {
+        padding-left: 20px;
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+
+}

@@ -1,0 +1,94 @@
+@php
+    if ($arResult["NavRecordCount"] == 0 || $arResult["NavPageCount"] < 2) return;
+    
+    if (isPost()) $arResult["NavQueryString"] = "";
+    
+    $strNavQueryString = ($arResult["NavQueryString"] != "" ? $arResult["NavQueryString"] . "&amp;" : "");
+    $strNavQueryStringFull = ($arResult["NavQueryString"] != "" ? "?" . $arResult["NavQueryString"] : "");
+    
+    $arResult["sUrlPath"] = $APPLICATION->GetCurDir();
+    
+    $nn = "PAGEN_" . $arResult["NavNum"];
+    $iPage = $arResult["NavPageNomer"];
+    $sUrl = $arResult["sUrlPath"] . "?" . $strNavQueryString . $nn . "=";
+    $sUrlFull = $arResult["sUrlPath"] . $strNavQueryStringFull;
+@endphp
+
+<ul class="pagenavigation" data-aos="fade">
+    @if($iPage > 1)
+        @if($arResult["bSavePage"])
+            <li class="prev">
+                <a href="{{ $sUrl }}{{ ($iPage - 1) }}" title="Предыдущая страница"
+                                data-rel="innerlink"><i class="icon ion-ios-arrow-left"></i></a>
+            </li>
+            <li class="">
+                <a href="{{ $sUrl }}1" title="Первая страница" data-rel="innerlink">1</a>
+            </li>
+        @else
+            @if ($iPage > 2)
+                <li class="prev">
+                    <a href="{{ $sUrl }}{{ ($iPage - 1) }}" title="Предыдущая страница"
+                                    data-rel="innerlink"><i class="icon ion-ios-arrow-left"></i></a>
+                </li>
+            @else
+                <li class="prev">
+                    <a href="{{ $sUrlFull }}" title="Предыдущая страница"
+                                    data-rel="innerlink"><i class="icon ion-ios-arrow-left"></i></a>
+                </li>
+            @endif
+            <li class="">
+                <a href="{{ $sUrlFull }}" title="Первая страница" data-rel="innerlink">1</a>
+            </li>
+        @endif
+    @else
+        {{--<li class="prev"><span><i class="icon ion-ios-arrow-left"></i></span></li>--}}
+        <li class="active"><span>1</span></li>
+    @endif
+
+    @if($arResult["nStartPage"] > 1)
+        <li><span class="pagenavigation__dots">...</span></li>
+    @endif
+
+    @php
+        $arResult["nStartPage"]++;
+    @endphp
+
+    @while($arResult["nStartPage"] <= $arResult["nEndPage"] - 1)
+        @if ($arResult["nStartPage"] == $iPage)
+            <li class="active"><span>{{ $arResult["nStartPage"] }}</span></li>
+        @else
+            <li class="">
+                <a href="{{ $sUrl }}{{ $arResult["nStartPage"] }}"
+                            title="Страница {{ $arResult["nStartPage"] }}"
+                            data-rel="innerlink">{{ $arResult["nStartPage"] }}</a>
+            </li>
+        @endif
+
+        @php
+            $arResult["nStartPage"]++;
+        @endphp
+    @endwhile
+
+    @if($arResult["NavPageCount"] - $arResult["nStartPage"] > 0)
+        <li><span class="pagenavigation__dots">...</span></li>
+    @endif
+
+    @if ($iPage < $arResult["NavPageCount"])
+        @if ($arResult["NavPageCount"] > 1)
+            <li class="">
+                <a href="{{ $sUrl }}{{ $arResult["NavPageCount"] }}"
+                            title="Страница {{ $arResult["NavPageCount"] }}"
+                            data-rel="innerlink">{{ $arResult["NavPageCount"] }}</a>
+            </li>
+        @endif
+        <li class="next">
+            <a href="{{ $sUrl }}{{ ($iPage + 1) }}" title="Следующая страница"
+                            data-rel="innerlink"><i class="icon ion-ios-arrow-right"></i></a>
+        </li>
+    @else
+        @if ($arResult["NavPageCount"] > 1)
+            <li class="active"><span>{{ $arResult["NavPageCount"] }}</span></li>
+        @endif
+        {{--<li class="next"><span><i class="icon ion-ios-arrow-right"></i></span></li>--}}
+    @endif
+</ul>

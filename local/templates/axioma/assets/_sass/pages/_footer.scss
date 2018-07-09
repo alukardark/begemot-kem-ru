@@ -1,0 +1,371 @@
+.footer {
+    position: relative;
+    background: $main_gray;
+    padding: 50px 0;
+    &__wraper {
+        position: relative;
+        @include display-flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+    &__left {
+    }
+    &__center {
+        flex-grow: 2;
+    }
+    &__right {
+        position: relative;
+        flex-basis: 300px;
+        & > div,
+        a {
+            font-size: 15px;
+            color: #ccc;
+            font-weight: 200;
+        }
+        a:hover {
+            color: $main_green;
+        }
+        & > div {
+            font-weight: 400;
+            margin-bottom: 10px;
+        }
+
+    }
+    &__logo {
+        margin-bottom: 50px;
+        @extend %sprite;
+        &__pc {
+            display: block;
+            @extend %sprite-logo-white;
+        }
+        &__sm {
+            display: none;
+            @extend %sprite-logo-white-sm;
+        }
+        &__xs {
+            display: none;
+            @extend %sprite-logo-white-xs;
+        }
+    }
+    &__applications {
+        margin-bottom: 30px;
+        &-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        &__wraper {
+            @include display-flex;
+            justify-content: space-between;
+            a {
+                &:hover {
+                    opacity: 0.7;
+                }
+            }
+        }
+        &__googleplay {
+            display: block;
+            background: url('/_include/images/google_plate.png') no-repeat center/contain;
+            width: 48%;
+            height: 50px;
+        }
+        &__appstore {
+            display: block;
+            background: url('/_include/images/apple_plate.png') no-repeat center/contain;
+            width: 48%;
+            height: 50px;
+        }
+    }
+    &__socnets {
+        @include display-flex;
+        justify-content: flex-start;
+        margin-bottom: 20px;
+        &__item {
+            width: 45px;
+            height: 45px;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+            background: #fff;
+            text-align: center;
+            margin-right: 15px;
+            &:hover {
+                background: $main_green;
+            }
+            i {
+                font-size: 24px;
+                line-height: 45px;
+                color: $main_gray;
+            }
+        }
+        &__xs {
+            display: none;
+        }
+    }
+    &__copyright {
+        font-size: 15px;
+        color: #fff;
+    }
+    &__menu {
+        &__wraper {
+            @include display-flex;
+            @include flex-direction(column);
+            flex-wrap: wrap;
+            max-height: 280px;
+        }
+        &__item {
+            &__parent {
+                padding-left: 30px;
+            }
+        }
+        &__link {
+            &__parent {
+                display: inline-block;
+                color: #fff;
+                text-decoration: none;
+                font-size: 18px;
+                font-weight: 600;
+                margin-bottom: 5px;
+            }
+            &__sub {
+                color: #fff;
+                font-size: 15px;
+                font-weight: 200;
+            }
+        }
+        &__sub {
+            margin-bottom: 30px;
+        }
+    }
+    &__hotline,
+    &__officephone {
+        a {
+            color: #fff;
+            font-size: 16px;
+            font-weight: 500;
+            text-decoration: none;
+        }
+    }
+    &__axi {
+        display: block;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        @extend %sprite;
+        @extend %sprite-logo-axi;
+        @include transition(all 300ms);
+        &:hover {
+            @include scale(1.1);
+        }
+    }
+}
+
+@media screen and (max-width: 1600px) {
+    .footer__menu__wraper {
+        height: 400px;
+        max-height: 400px;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+}
+
+@media screen and (max-width: 1200px) {
+    .footer {
+        &__wraper {
+            justify-content: flex-end;
+            flex-wrap: wrap;
+        }
+        &__left {
+            flex-basis: 40%;
+            max-width: 40%;
+        }
+        &__center {
+            flex-basis: 60%;
+            max-width: 60%;
+        }
+        &__right {
+            flex-basis: 60%;
+            @include display-flex;
+            @include flex-direction(column);
+            flex-wrap: wrap;
+            height: 200px;
+            max-height: 200px;
+            & > div {
+                padding-left: 30px;
+                max-width: 210px;
+            }
+            a {
+                display: block;
+            }
+        }
+        &__applications {
+            &-title {
+                margin-bottom: 20px;
+            }
+            &__wraper {
+                flex-wrap: wrap;
+            }
+            &__googleplay {
+                margin-bottom: 5px;
+            }
+        }
+        &__copyright {
+            font-size: 12px;
+        }
+        &__axi {
+            bottom: -20px;
+        }
+    }
+}
+
+@media screen and (max-width: 992px) {
+}
+
+@media screen and (max-width: 768px) {
+    .footer {
+        &__socnets {
+            &__pc {
+                display: none;
+            }
+            &__xs {
+                display: block;
+                margin: 0 auto;
+            }
+        }
+        &__wraper {
+            display: block;
+            //@include flex-direction(column);
+            justify-content: flex-start;
+            align-items: center;
+            flex-wrap: nowrap;
+        }
+        &__left {
+            margin: 0 auto;
+            flex-basis: 90%;
+            max-width: 90%;
+            width: 90%;
+            @include display-flex;
+            justify-content: space-between;
+        }
+        &__center {
+            margin: 0 auto;
+            flex-basis: 90%;
+            max-width: 90%;
+            width: 90%;
+        }
+        &__right {
+            margin: 0 auto;
+            flex-basis: 90%;
+            max-width: 90%;
+            width: 90%;
+            & > div {
+                padding-left: 0;
+            }
+        }
+        &__logo {
+            &__pc {
+                display: none;
+            }
+            &__sm {
+                display: block;
+            }
+        }
+        &__applications {
+            flex-basis: 50%;
+        }
+        &__menu {
+            &__item__parent {
+                max-width: 50%;
+                width: 50%;
+                padding-left: 0;
+            }
+        }
+        &__socnets {
+            justify-content: center;
+            margin-top: 20px;
+        }
+        &__axi {
+            right: 80px;
+        }
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .footer {
+        &__wraper {
+            padding-bottom: 50px;
+        }
+        &__left {
+            flex-basis: 80%;
+            max-width: 80%;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        &__applications {
+            flex-basis: auto;
+            &-title {
+                font-size: 12px;
+                text-align: center;
+            }
+            &__wraper {
+                margin: 0 auto;
+                & > a {
+                    margin-right: 0;
+                }
+            }
+        }
+        &__menu {
+            &__wraper {
+                max-height: 450px;
+                @include flex-direction(row);
+                justify-content: space-between;
+            }
+            &__item {
+                &__parent {
+                    width: 45%;
+                }
+                &__sub {
+                    line-height: 1.2;
+                    margin-bottom: 5px;
+                }
+            }
+            &__link {
+                &__parent {
+                    font-size: 12px;
+                }
+                &__sub {
+                    font-size: 12px;
+                }
+            }
+        }
+        &__right {
+            @include flex-direction(row);
+            justify-content: space-between;
+            & > div {
+                font-size: 12px;
+                max-width: 300px;
+                width: 45%;
+                & > a {
+                    font-size: 12px;
+                }
+            }
+        }
+        &__legallinks {
+            @include display-flex;
+            justify-content: space-between;
+            width: 100% !important;
+            & > a {
+                width: 45%;
+            }
+        }
+        &__copyright {
+            text-align: center;
+        }
+        &__axi {
+            right: 50%;
+            @include translateX(50%);
+        }
+    }
+}

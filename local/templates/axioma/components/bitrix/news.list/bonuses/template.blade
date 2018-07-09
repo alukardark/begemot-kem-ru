@@ -1,0 +1,71 @@
+@unless (empty($arResult))
+
+    <div class="bonuses">
+
+        @foreach($arResult['ITEMS'] as $arItem)
+            <div id="@actionEditAndDeleteIBlockElement($arItem)" class="bonuses__item">
+
+                <div class="bonuses__item__info">
+                    <div class="bonuses__item__info__head">
+                        <div class="bonuses__item__info__period">
+                            <i></i>
+                            <span>{{ $arItem['NAME'] }}</span>
+                        </div>
+                        <a href="{{ $arItem['DISPLAY_PROPERTIES']['TERMS']['FILE_VALUE']['SRC'] }}" target="_blank"
+                           class="bonuses__item__info__terms">
+                            <i></i>
+                            <span>Посмотреть условия участия в бонусной программе</span>
+                        </a>
+                    </div>
+
+                    <div class="bonuses__item__info__body">
+                        {!! $arItem['PREVIEW_TEXT'] !!}
+                    </div>
+
+                    <a href="#" class="bonuses__item__addtrigger" data-addinfo="addinfo-{{ $loop->index }}">
+                        Дополнительно
+                        <i class="ion-ios-arrow-down"></i>
+                    </a>
+                </div>
+
+                <div class="bonuses__item__booklet preloadopacity preloadopacity-loading">
+                    @foreach($arItem['BOOKLET'] as $page)
+                        <div class="bonuses__item__booklet__page__wraper">
+                            <a href="{{ $page }}" data-fancybox="booklet-{{ $loop->parent->index }}"
+                               class="bonuses__item__booklet__page" style="background-image: url({{ $page }})">
+                                <span class="gallery-item-overlay"></span>
+                            </a>
+                        </div>
+                    @endforeach
+                </div>
+
+                <div id="addinfo-{{ $loop->index }}" class="bonuses__item__partners off" style="display: none;">
+                    <h2>Партнеры, участвующие в программе</h2>
+                    <div class="bonuses__item__partners__links">
+                        @foreach($arItem['PARTNERS'] as $partner)
+                            @if($partner['DESCRIPTION'])
+                                <a href="{{ $partner['DESCRIPTION'] }}" class="bonuses__item__partners__link"
+                                    target="_blank" rel="nofollow"
+                                >
+                                    <span class="bonuses__item__partners__link-logo"
+                                          style="background-image: url({{ $partner['SRC'] }})"></span>
+                                </a>
+                            @else
+                                <span class="bonuses__item__partners__link">
+                                    <span class="bonuses__item__partners__link-logo"
+                                          style="background-image: url({{ $partner['SRC'] }})"></span>
+                                </span>
+                            @endif
+                        @endforeach
+                    </div>
+                    <div class="bonuses__item__partners__text">
+                        {!! $arItem['DETAIL_TEXT'] !!}
+                    </div>
+                </div>
+
+            </div>
+        @endforeach
+
+    </div>
+
+@endunless

@@ -1,0 +1,60 @@
+@unless (empty($arResult))
+
+    <div class="vacancies">
+
+        <div class="vacancies__sidebar">
+            <div class="vacancies__sidebar-intro">{!! \Axi\Helpers::GT('vacancies_intro') !!}</div>
+
+            <div class="vacancies__sidebar__filter">
+                @include('templates_parts.vacancies_filter')
+            </div>
+
+            <div class="vacancies__sidebar-text">{!! \Axi\Helpers::GT('vacancies_text') !!}</div>
+        </div>
+
+        <div id="vacancies_body" class="vacancies__body">
+
+            @foreach($arResult['ITEMS'] as $arItem)
+                <div class="vacancies__item"
+                     data-city="{{ $arItem['SHOP']['PROPERTY_CITY_VALUE'] }}"
+                     data-shop="{{ $arItem['SHOP']['PROPERTY_ADDRESS_VALUE'] }}"
+                     data-vacancy="{{ $arItem['NAME'] }}"
+                >
+                    <div class="vacancies__item__control collapsed" role="button"
+                         aria-expanded="false"
+                         data-toggle="collapse"
+                         data-target="#vacancy-collapse-{{ $loop->index }}"
+                    >
+                        <span class="vacancies__item__control-name">
+                            {{ $arItem['NAME'] }}
+                        </span>
+                        <span class="vacancies__item__control-salary">
+                            {{ $arItem['PROPERTIES']['SALARY']['VALUE'] }}
+                        </span>
+                        <span class="vacancies__item__control-city">{{ $arItem['SHOP']['PROPERTY_CITY_VALUE'] }}</span><span
+                                class="vacancies__item__control-address">, {{ $arItem['SHOP']['PROPERTY_ADDRESS_VALUE'] }}</span>
+                    </div>
+                    <div id="vacancy-collapse-{{ $loop->index }}"
+                         class="vacancies__item__content collapse"
+                         data-parent="#vacancies_body"
+                    >
+                        <div class="vacancies__item__content__wraper">
+                            {!! $arItem['PREVIEW_TEXT'] !!}
+                        </div>
+                        <div class="vacancies__item__content__send">
+                            <a href="#form_resume" class="fancymodal-call g-btn g-btn-rounded g-btn-red">
+                                Отправить резюме
+                            </a>
+                        </div>
+                        <div class="vacancies__item__content__dummy"></div>
+                    </div>
+                </div>
+            @endforeach
+
+        </div>
+
+    </div>
+
+    <? Axi\Helpers::GF('_forms/resume') ?>
+
+@endunless

@@ -1,0 +1,128 @@
+$box_width: 34px;
+$box_height: 24px;
+$item_height: 4px;
+
+.mobnav__toogle {
+    &:hover {
+         //.hamburger-inner,
+         //.hamburger-inner::before,
+         //.hamburger-inner::after {
+         //    background: $main_green;
+         //}
+    }
+    .hamburger {
+        display: inline-block;
+        position: relative;
+        transition-property: opacity, filter;
+        transition-duration: 0.15s;
+        transition-timing-function: linear;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        overflow: visible;
+        margin-right: 20px;
+        &-box {
+            width: $box_width;
+            height: $box_height;
+            display: inline-block;
+            position: relative;
+        }
+        &-inner {
+            display: block;
+            top: 50%;
+        }
+        &-inner,
+        &-inner::before,
+        &-inner::after {
+            width: $box_width;
+            height: $item_height;
+            -webkit-border-radius: 2px;
+            -moz-border-radius: 2px;
+            border-radius: 2px;
+            background-color: #fff;
+            position: absolute;
+            transition-property: transform;
+            transition-duration: 0.15s;
+            transition-timing-function: ease;
+        }
+        &-inner::before,
+        &-inner::after {
+            content: "";
+            display: block;
+        }
+        &-inner::before {
+            top: -10px;
+        }
+        &-inner::after {
+            bottom: -10px;
+        }
+    }
+    /*squeeze*/
+    .hamburger--squeeze {
+        .hamburger-inner {
+            transition-duration: 0.1s;
+            transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+            &::before {
+                transition: top 0.1s 0.14s ease, opacity 0.1s ease;
+            }
+            &::after {
+                transition: bottom 0.1s 0.14s ease, transform 0.1s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+            }
+        }
+        &.is-active {
+            .hamburger-inner {
+                @include rotate(45deg);
+                transition-delay: 0.14s;
+                transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+                &::before {
+                    top: 0;
+                    opacity: 0;
+                    transition: top 0.1s ease, opacity 0.1s 0.14s ease;
+                }
+                &::after {
+                    bottom: 0;
+                    @include rotate(-90deg);
+                    transition: bottom 0.1s ease, transform 0.1s 0.14s cubic-bezier(0.215, 0.61, 0.355, 1);
+                }
+            }
+        }
+    }
+    /*spin*/
+    .hamburger--spin {
+        .hamburger-inner {
+            @include transition-duration(0.3s);
+            @include transition-timing-function(cubic-bezier(0.55, 0.055, 0.675, 0.19));
+            &::before {
+                @include transition(top 0.1s 0.34s ease-in, opacity 0.1s ease-in);
+            }
+            &::after {
+                @include transition(bottom 0.1s 0.34s ease-in, transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19));
+            }
+        }
+    }
+    .hamburger--spin.is-active {
+        .hamburger-inner {
+            @include rotate(225deg);
+            @include transition-delay(0.14s);
+            @include transition-timing-function(cubic-bezier(0.215, 0.61, 0.355, 1));
+            background: #000;
+            &::before {
+                top: 0;
+                opacity: 0;
+                @include transition (top 0.1s ease-out, opacity 0.1s 0.14s ease-out);
+                background: #000;
+            }
+            &::after {
+                bottom: 0;
+                @include rotate(-90deg);
+                @include transition (bottom 0.1s ease-out, transform 0.3s 0.14s cubic-bezier(0.215, 0.61, 0.355, 1));
+                background: #000;
+            }
+        }
+        &:hover .hamburger-inner,
+        &:hover .hamburger-inner::before,
+        &:hover .hamburger-inner::after {
+            background: #fff;
+        }
+    }
+}

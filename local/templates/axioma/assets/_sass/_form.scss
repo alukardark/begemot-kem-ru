@@ -1,0 +1,188 @@
+.feedback_form {
+    position: relative;
+    padding: 40px;
+    padding-bottom: 30px;
+    max-width: 900px;
+    &__errors {
+        display: none;
+        margin-bottom: 30px;
+        color: $error;
+        border-left: 3px solid $error;
+        background-color: rgba($error, 0.1);
+        padding-left: 30px;
+    }
+    &__success {
+        margin-top: 80px;
+        margin-bottom: 30px;
+        font-size: 22px;
+        font-weight: 400;
+        color: $success;
+        border-left: 3px solid $success;
+        background-color: rgba($success, 0.1);
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    &__title {
+        font-size: 26px;
+        font-weight: 700;
+        margin-bottom: 50px;
+    }
+    &__row {
+        @include display-flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        &__item {
+            flex-basis: 32%;
+            position: relative;
+            margin-bottom: 15px;
+        }
+        textarea {
+            height: 130px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            padding-right: 20px;
+            -webkit-border-radius: 8px !important;
+            -moz-border-radius: 8px !important;
+            border-radius: 8px !important;
+        }
+        &__footer {
+            margin-top: 50px;
+        }
+    }
+    &__input {
+        display: inline-block;
+        height: 45px;
+        border: 1px solid $main_gray2;
+        -webkit-border-radius: 45px !important;
+        -moz-border-radius: 45px !important;
+        border-radius: 45px !important;
+        background-color: transparent;
+        font-size: 14px;
+        font-weight: 500;
+        padding-left: 40px;
+        padding-right: 40px;
+        width: 100%;
+        position: relative;
+        z-index: 1;
+        &:focus {
+            @include input-placeholder {
+                opacity: 0;
+            }
+        }
+        @include input-placeholder {
+            text-overflow: ellipsis;
+            @include transition(all 300ms);
+        }
+        &.passed {
+            border-color: $main-green;
+        }
+        &.error {
+            border-color: $main_red;
+        }
+    }
+    &__placeholder {
+        position: absolute;
+        top: 5px;
+        left: 0;
+        font-size: 20px;
+        color: $light_black;
+        z-index: 0;
+        @include transition(all 200ms);
+        &.active {
+            top: -20px;
+            font-size: 16px;
+        }
+    }
+    &__icon {
+        font-size: 24px;
+        color: $light_gray;
+        @include transition(color 500ms);
+        &.passed {
+            color: $main_yellow;
+        }
+        &.error {
+            color: $main_red;
+        }
+    }
+    &__file {
+        &-button {
+            @include display-flex;
+            align-items: center;
+            max-width: 290px;
+            font-size: 14px;
+            color: $main_red;
+            &:hover {
+                color: $main_red;
+                text-decoration: none;
+            }
+            i {
+                flex-shrink: 0;
+                display: block;
+                margin-right: 15px;
+                @extend %sprite;
+                @extend %sprite-attach;
+            }
+        }
+        &-filename {
+            //color: $main_green;
+        }
+        &-remove {
+            cursor: pointer;
+            color: $main_red;
+            @include transition(all 300ms);
+            &:hover {
+                opacity: 0.5;
+            }
+        }
+        &-error {
+            color: $main_red;
+            line-height: 1.3;
+        }
+    }
+    &__button {
+        margin-bottom: 20px;
+        max-width: 250px;
+        button {
+            width: 100%;
+        }
+    }
+    &__legal {
+        padding-top: 5px;
+        line-height: 1.2;
+    }
+}
+
+.main__projects__idea__modal {
+    &-dialog {
+        max-width: 992px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .feedback_form {
+        &__input {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .feedback_form {
+        padding: 0;
+        &__title {
+            font-size: 20px;
+            padding-top: 20px;
+            margin-bottom: 30px;
+        }
+        &__row {
+            display: block;
+            &__footer {
+                margin-top: 30px;
+            }
+        }
+        &__file {
+            margin-bottom: 30px;
+        }
+    }
+}

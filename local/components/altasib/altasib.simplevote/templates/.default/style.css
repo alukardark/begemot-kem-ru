@@ -1,0 +1,8 @@
+.alx_line_container{
+        width: 60%;
+}
+.alx_line_container div{
+        float: left;
+        height: 18px;
+        padding: 4px 0px 0px 3px;
+}

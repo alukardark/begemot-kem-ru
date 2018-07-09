@@ -1,0 +1,101 @@
+@unless (empty($arResult))
+
+    <div class="tenants">
+
+        <div class="tenants__head" data-aos="fade">
+            <div class="tenants__head__text">
+                {!! \Axi\Helpers::GT('tenants_head_text') !!}
+            </div>
+            <div class="tenants__head__filter">
+                <div class="dropdown">
+                    <div class="dropdown__button"
+                         data-toggle="dropdown"
+                         role="button" aria-expanded="false"
+                    >
+                        <div class="dropdown__content">
+                            <span class="dropdown__content-text">{{ $arResult['CURRENT_CITY'] }}</span>
+                            <span class="dropdown__content-count">{{ $arResult['CITIES'][$arResult['CURRENT_CITY']] }}</span>
+                        </div>
+                        <div class="dropdown__button-arrow"><i class="ion-ios-arrow-down"></i></div>
+                    </div>
+                    <div class="dropdown-menu dropdown__menu">
+                        @foreach($arResult['CITIES'] as $city => $cityCount)
+                            @php
+                                $active = $arResult['CURRENT_CITY'] == $city ? 'active' : '';
+                            @endphp
+                            <div class="dropdown__menu-item {{ $active }}"
+                                 data-city="{{ $city != 'Все города' ? $city : '' }}"
+                            >
+                                <div class="dropdown__content">
+                                    <span class="dropdown__content-text">{{ $city }}</span>
+                                    <span class="dropdown__content-count">{{ $cityCount }}</span>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @foreach($arResult['ITEMS'] as $arItem)
+            <div id="@actionEditAndDeleteIBlockElement($arItem)" class="tenants__item"
+                 data-city="{{ $arItem['DISPLAY_PROPERTIES']['CITY']['VALUE'] }}"
+                 data-address="{{ $arItem['NAME'] }}"
+            >
+                <div class="tenants__item__gallery">
+                    @foreach($arItem['GALLERY'] as $image)
+                        <div class="tenants__item__gallery__image__wraper">
+                            @if($image != NO_IMAGE)
+                                <a href="{{ $image }}" data-fancybox="{{ $loop->parent->index . $arItem['CODE'] }}"
+                                    class="tenants__item__gallery__image" style="background-image: url({{ $image }})"
+                                >
+                                    <span class="gallery-item-overlay"></span>
+                                </a>
+                            @else
+                                <span class="tenants__item__gallery__image" style="background-image: url({{ $image }})">
+                                </span>
+                            @endif
+                        </div>
+                    @endforeach
+                </div>
+
+                <div class="tenants__item__info">
+                    <div class="tenants__item__info__head">
+                        <div class="tenants__item-property">
+                            <i class="address"></i>
+                            <span>{{ $arItem['NAME'] }}</span>
+                        </div>
+                        <div class="tenants__item-property">
+                            <i class="type"></i>
+                            <span>{{ $arItem['DISPLAY_PROPERTIES']['TYPE']['VALUE'] }}</span>
+                        </div>
+                        <div class="tenants__item-property">
+                            <i class="area"></i>
+                            <span>{{ $arItem['DISPLAY_PROPERTIES']['AREA']['VALUE'] }}</span>
+                        </div>
+                    </div>
+
+                    <div class="tenants__item__info__text">
+                        {!! $arItem['PREVIEW_TEXT'] !!}
+                    </div>
+                </div>
+
+                <div class="tenants__item__info__text tenants__item__info__text-mobile">
+                    {!! $arItem['PREVIEW_TEXT'] !!}
+                </div>
+
+                <a href="#form_tenants" class="fancymodal-call g-btn g-btn-rounded g-btn-red tenants__item-getin">
+                    Стать арендатором
+                </a>
+            </div>
+        @endforeach
+
+    </div>
+
+    <? Axi\Helpers::GF('_forms/tenants') ?>
+
+    @if($arParams["DISPLAY_BOTTOM_PAGER"])
+        {!! $arResult["NAV_STRING"] !!}
+    @endif
+
+@endunless

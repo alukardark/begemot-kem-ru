@@ -1,0 +1,61 @@
+@if (!empty($arResult['ITEMS']))
+    {{--{{ dmp($arResult) }}--}}
+
+    <div class="catalog__section">
+
+        @foreach($arResult['ITEMS'] as $arItem)
+            <div class="catalog__section__item__wraper" data-aos="fade">
+                <a href="#{{ $arItem['CODE'] }}" id="@actionEditAndDeleteIBlockElement($arItem)"
+                   class="fancymodal-call catalog__section__item">
+                    <span class="catalog__section__item-image"
+                          style="background-image: url({{ $arItem['PREVIEW_PICTURE']['SRC'] }})"
+                    >
+                    </span>
+                    <span class="catalog__section__item-title">{{ $arItem['NAME'] }}</span>
+                </a>
+            </div>
+            <div id="{{ $arItem['CODE'] }}" style="display: none"
+                 class="catalog__detail"
+            >
+                <div class="catalog__detail__title">{{ $arItem['NAME'] }}</div>
+                <div class="catalog__detail__body">
+                    <div class="catalog__detail__gallery">
+                        <a href="{{ $arItem['DETAIL_PICTURE']['SRC'] }}" class="catalog__detail__gallery-item"
+                           data-fancybox="{{ $arItem['CODE'] }}-gallery"
+                           style="background-image: url({{ $arItem['PREVIEW_PICTURE']['SRC'] }})"
+                        >
+                            <span class="gallery-item-overlay"></span>
+                        </a>
+                        @foreach($arItem['DISPLAY_PROPERTIES']['MORE_PHOTO']['FILE_VALUE'] as $image)
+                            <a href="{{ $image['SRC'] }}" class="catalog__detail__gallery-item"
+                               data-fancybox="{{ $arItem['CODE'] }}-gallery"
+                               style="background-image: url({{ $image['SRC'] }})"
+                            >
+                                <span class="gallery-item-overlay"></span>
+                            </a>
+                        @endforeach
+                    </div>
+                    <div class="catalog__detail__info">
+                        {!! $arItem['DETAIL_TEXT'] !!}
+                    </div>
+                </div>
+                <div class="catalog__detail__info">
+                    {!! $arItem['PREVIEW_TEXT'] !!}
+                </div>
+            </div>
+        @endforeach
+
+        <div class="catalog__flexfix"></div>
+        <div class="catalog__flexfix"></div>
+        <div class="catalog__flexfix"></div>
+
+    </div>
+
+    <a href="{{$arResult['SECTION_PAGE_URL']}}"
+       class="g-btn g-btn-rounded g-btn-transparent catalog__section__back back__button">
+        Назад
+    </a>
+
+@else
+    <div class="text-center" data-aos="fade">Извините, в этом разделе еще нет товаров.</div>
+@endif

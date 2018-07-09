@@ -1,0 +1,183 @@
+.main__actions {
+    width: 47%;
+    &__wraper {
+        padding-top: 50px;
+        padding-bottom: 80px;
+    }
+    &__header {
+        @include display-flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+    }
+    &-all {
+        font-weight: 200;
+    }
+    &__slider {
+        .slick {
+            &-arrow {
+                bottom: -50px;
+                width: 35px;
+                height: 35px;
+                background: $main_red;
+                -webkit-border-radius: 50%;
+                -moz-border-radius: 50%;
+                border-radius: 50%;
+                text-align: center;
+                i {
+                    line-height: 35px;
+                    color: #fff;
+                    font-size: 24px;
+                    width: 80%;
+                }
+                &:hover {
+                    background: $main_green;
+                    i {
+                        color: #fff;
+                    }
+                }
+            }
+            &-prev {
+                left: 0;
+                i {
+                    margin-left: 2px;
+                }
+            }
+            &-next {
+                left: 60px;
+                i {
+                    margin-left: 5px;
+                }
+            }
+            &-slide {
+                & > div {
+                    text-align: center;
+                }
+            }
+        }
+        &__item {
+            display: block;
+            text-decoration: none;
+            color: $main_black;
+            line-height: 1.2;
+            max-width: 325px;
+            text-align: left;
+            &:hover {
+                .main__actions__slider__item-image {
+                    opacity: 0.7;
+                }
+                .main__actions__slider__item-title {
+                    color: $main_black;
+                    text-decoration: underline;
+                }
+            }
+            &-image {
+                display: block;
+                height: 220px;
+                margin-bottom: 25px;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
+                opacity: 1;
+                @include transition(opacity 300ms);
+            }
+            &-title {
+                font-size: 18px;
+                font-weight: 500;
+                color: $main_black;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1900px) {
+}
+
+@media screen and (max-width: 1600px) {
+    .main__actions {
+        &__all {
+            margin-right: 40px;
+        }
+        &__slider__item {
+            max-width: 265px;
+            &-image {
+                height: 190px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .main__actions__slider__item {
+        max-width: 200px;
+        &-image {
+            height: 140px;
+        }
+        &-title {
+            font-size: 16px;
+        }
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .main__actions {
+        width: 100%;
+        &__slider__item {
+            max-width: 320px;
+            &-image {
+                height: 210px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .main__actions {
+        width: 100%;
+        &__slider__item {
+            max-width: 300px;
+            &-image {
+                height: 200px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .main__actions {
+        &__slider {
+            .slick-dots {
+                bottom: -20px;
+                left: 50%;
+                @include translateX(-50%);
+                li {
+                    margin: 0 10px !important;
+                }
+            }
+            &__item {
+                max-width: 210px;
+                &-image {
+                    height: 140px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .main__actions {
+        &__header {
+            justify-content: center;
+        }
+        &-all {
+            display: none;
+        }
+        &__slider__item {
+            text-align: center;
+            max-width: 300px;
+            &-image {
+                height: 200px;
+            }
+        }
+    }
+}

@@ -1,0 +1,210 @@
+.ipage .tenants {
+    &__head {
+        position: relative;
+        z-index: 2;
+        @include display-flex;
+        justify-content: space-between;
+        margin-bottom: 50px;
+        &__text {
+            font-size: 14px;
+            padding-right: 30px;
+        }
+        &__filter {
+            .dropdown__menu-item.active {
+                cursor: default;
+                pointer-events: none;
+            }
+        }
+    }
+    &__item {
+        box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+        background: #fff;
+        padding: 70px 120px 70px 70px;
+        position: relative;
+        @include display-flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-bottom: 60px;
+        @include transition(opacity 300ms);
+        &.disable {
+            opacity: 0;
+        }
+        &__gallery {
+            flex-basis: 30%;
+            max-width: 30%;
+            .slick {
+                &-arrow {
+                    top: 50%;
+                    @include translateY(-50%);
+                    width: 30px;
+                    height: 40px;
+                    i {
+                        font-size: 30px;
+                        line-height: 40px;
+                    }
+                }
+                &-prev {
+                    left: -30px;
+                }
+                &-next {
+                    right: -30px;
+                }
+            }
+            &__image {
+                position: relative;
+                display: block;
+                width: 100%;
+                max-width: 420px;
+                height: 260px;
+                background-repeat: no-repeat;
+                background-position: center;
+                -webkit-background-size: cover;
+                background-size: cover;
+                margin: 0 auto;
+                &__wraper {
+                }
+            }
+        }
+        &__info {
+            flex-basis: 60%;
+            max-width: 60%;
+            &__head {
+                @include display-flex;
+                justify-content: space-between;
+                margin-bottom: 30px;
+            }
+            &__text {
+                font-size: 14px;
+                &-mobile {
+                    display: none;
+                    flex-basis: 100%;
+                }
+            }
+        }
+        &-property {
+            @include display-flex;
+            font-size: 14px;
+            font-weight: 600;
+            &:first-child {
+                flex-basis: 45%;
+                max-width: 45%;
+            }
+            i {
+                position: relative;
+                flex-shrink: 0;
+                display: block;
+                margin-right: 20px;
+                @extend %sprite;
+                &.address {
+                    top: 1px;
+                    @extend %sprite-property-address;
+                }
+                &.type {
+                    top: 1px;
+                    @extend %sprite-property-type;
+                }
+                &.area {
+                    top: 1px;
+                    @extend %sprite-property-area;
+                }
+            }
+        }
+        &-getin {
+            position: absolute;
+            bottom: 70px;
+            right: 120px;
+        }
+    }
+}
+
+
+@media screen and (max-width: 1600px) {
+    .ipage .tenants__item {
+        &__info__head {
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+        &-property {
+            margin-bottom: 20px;
+            &:first-child {
+                max-width: none;
+                flex-basis: auto;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1400px) {
+}
+
+@media screen and (max-width: 1200px) {
+    .ipage .tenants__item {
+        padding-right: 70px;
+        &__gallery {
+            flex-basis: 40%;
+            max-width: 40%;
+            margin-bottom: 30px;
+            &__image {
+                height: 180px;
+            }
+        }
+        &__info {
+            &__head {
+                display: block;
+                padding-left: 80px;
+            }
+            &__text {
+                display: none;
+                &-mobile {
+                    display: block;
+                    padding-bottom: 70px;
+                }
+            }
+        }
+        &-getin {
+            right: 70px;
+        }
+    }
+}
+
+@media screen and (max-width: 992px) {
+}
+
+@media screen and (max-width: 768px) {
+    .ipage .tenants {
+        &__head {
+            display: block;
+            &__text {
+                margin-bottom: 30px;
+            }
+        }
+        &__item {
+            display: block;
+            &__gallery {
+                max-width: 100%;
+            }
+            &__info {
+                max-width: 100%;
+                &__head {
+                    padding-left: 0;
+                    margin-bottom: 20px;
+                }
+            }
+            &-getin {
+                right: auto;
+                left: 70px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .ipage .tenants__item {
+        padding: 30px 30px 50px 30px;
+        &-getin {
+            bottom: 30px;
+            left: 50%;
+            @include translateX(-50%);
+        }
+    }
+}

@@ -1,0 +1,49 @@
+@unless (empty($arResult))
+
+    <div class="news__detail clearfix">
+
+        <div class="news__detail__gallery preloadopacity preloadopacity-loading">
+            <a href="{{ $arResult['DETAIL_PICTURE']['SRC'] or NO_IMAGE }}" class="news__detail__gallery__item"
+               style="background-image: url({{ $arResult['PREVIEW_PICTURE']['SRC'] or NO_IMAGE }})"
+               data-fancybox="{{ $arResult['CODE'] }}"
+            >
+                <span class="gallery-item-overlay"></span>
+            </a>
+            @foreach($arResult['MORE_PHOTO'] as $image)
+                <a href="{{ $image }}" class="news__detail__gallery__item"
+                   style="background-image: url({{ $image }})"
+                   data-fancybox="{{ $arResult['CODE'] }}"
+                >
+                    <span class="gallery-item-overlay"></span>
+                </a>
+            @endforeach
+        </div>
+
+        <div class="news__detail__info" data-aos="fade" data-aos-delay="300">
+            <span class="news__detail-date">
+                <i></i>
+                {{ $arResult['DISPLAY_ACTIVE_FROM'] }}
+            </span>
+
+            <span class="news__detail-text">
+                {!! $arResult['DETAIL_TEXT'] !!}
+            </span>
+
+            <div class="news__detail__info__footer">
+                <a href="{{$arResult['LIST_PAGE_URL']}}"
+                   class="g-btn g-btn-rounded g-btn-transparent news__detail-back back__button">
+                    Назад
+                </a>
+
+                @if($arResult['SHOW_COUNTER'] > 0)
+                    <span class="news__detail-counter">
+                    Прочитано: {{ $arResult['SHOW_COUNTER'] }}
+                        {{ wordPlural($arResult['SHOW_COUNTER'], ['раз', 'раза', 'раз']) }}
+                </span>
+                @endif
+            </div>
+        </div>
+
+    </div>
+
+@endunless

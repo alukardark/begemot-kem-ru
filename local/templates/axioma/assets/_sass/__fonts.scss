@@ -1,0 +1,104 @@
+@include font-face(
+    "formular",
+    font-files(
+        "formularregular/formularregular.ttf",
+        "formularregular/formularregular.woff",
+        "formularregular/formularregular.woff2",
+        "formularregular/formularregular.svg"
+    ),
+    "formularregular/formularregular.ttf",
+    400,
+    normal
+);
+
+@include font-face(
+    "formular",
+    font-files(
+        "formularbold/formularbold.ttf",
+        "formularbold/formularbold.woff",
+        "formularbold/formularbold.woff2",
+        "formularbold/formularbold.svg"
+    ),
+    "formularbold/formularbold.ttf",
+    700,
+    normal
+);
+
+@include font-face(
+    "Montserrat",
+    font-files(
+        "MontserratLight/MontserratLight.ttf",
+        "MontserratLight/MontserratLight.woff",
+        "MontserratLight/MontserratLight.woff2",
+        "MontserratLight/MontserratLight.svg"
+    ),
+    "MontserratLight/MontserratLight.ttf",
+    200,
+    normal
+);
+
+@include font-face(
+    "Montserrat",
+    font-files(
+        "MontserratRegular/MontserratRegular.ttf",
+        "MontserratRegular/MontserratRegular.woff",
+        "MontserratRegular/MontserratRegular.woff2",
+        "MontserratRegular/MontserratRegular.svg"
+    ),
+    "MontserratRegular/MontserratRegular.ttf",
+    400,
+    normal
+);
+
+@include font-face(
+    "Montserrat",
+    font-files(
+        "MontserratMedium/MontserratMedium.ttf",
+        "MontserratMedium/MontserratMedium.woff",
+        "MontserratMedium/MontserratMedium.woff2",
+        "MontserratMedium/MontserratMedium.svg"
+    ),
+    "MontserratMedium/MontserratMedium.ttf",
+    500,
+    normal
+);
+
+@include font-face(
+    "Montserrat",
+    font-files(
+        "MontserratSemiBold/MontserratSemiBold.ttf",
+        "MontserratSemiBold/MontserratSemiBold.woff",
+        "MontserratSemiBold/MontserratSemiBold.woff2",
+        "MontserratSemiBold/MontserratSemiBold.svg"
+    ),
+    "MontserratSemiBold/MontserratSemiBold.ttf",
+    600,
+    normal
+);
+
+@include font-face(
+    "Montserrat",
+    font-files(
+        "MontserratBold/MontserratBold.ttf",
+        "MontserratBold/MontserratBold.woff",
+        "MontserratBold/MontserratBold.woff2",
+        "MontserratBold/MontserratBold.svg"
+    ),
+    "MontserratBold/MontserratBold.ttf",
+    700,
+    normal
+);
+
+
+@include font-face(
+    "Montserrat",
+    font-files(
+        "MontserratExtraBold/MontserratExtraBold.ttf",
+        "MontserratExtraBold/MontserratExtraBold.woff",
+        "MontserratExtraBold/MontserratExtraBold.woff2",
+        "MontserratExtraBold/MontserratExtraBold.svg"
+    ),
+    "MontserratExtraBold/MontserratExtraBold.ttf",
+    800,
+    normal
+);

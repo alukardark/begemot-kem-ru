@@ -1,0 +1,18 @@
+$sprite: sprite-map("sprite/*.png", $layout: smart, $spacing: 60px);
+
+%sprite {
+    background-image: $sprite;
+}
+@each $i in sprite_names($sprite) {
+    %sprite-#{$i} {
+        background-position: sprite-position($sprite, $i);
+        height: sprite-height($sprite, $i);
+        width: sprite-width($sprite, $i);
+    }
+}
+@mixin sprite($i) {
+    background-image: $sprite;
+    background-position: sprite-position($sprite, $i);
+    height: sprite-height($sprite, $i);
+    width: sprite-width($sprite, $i);
+}

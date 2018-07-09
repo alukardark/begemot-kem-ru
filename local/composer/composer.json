@@ -1,0 +1,9 @@
+{
+    "require": {
+        "arrilot/bitrix-blade": "^0.6",
+        "arrilot/bitrix-hermitage": "^1.1",
+        "arrilot/bitrix-models": "^0.6.2",
+        "arrilot/bitrix-iblock-helper": "^0.3.1",
+        "arrilot/bitrix-cacher": "^2.1"
+    }
+}

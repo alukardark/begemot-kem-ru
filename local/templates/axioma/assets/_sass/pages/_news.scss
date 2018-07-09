@@ -1,0 +1,231 @@
+.ipage .news {
+    &__list {
+        @include display-flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        &__item {
+            height: 350px;
+            padding: 50px;
+            background: #fff;
+            box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+            @include display-flex;
+            text-decoration: none;
+            color: $main_black;
+            @include transition(all 300ms);
+            &__wraper {
+                flex-basis: 49%;
+                margin-bottom: 40px;
+            }
+            &:hover {
+                color: $main_black;
+                box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
+                .news__list__item-title::after {
+                    width: 100%;
+                }
+            }
+            &__image {
+                position: relative;
+                display: block;
+                flex-basis: 320px;
+                min-width: 320px;
+                height: 100%;
+                margin-right: 40px;
+                background-repeat: no-repeat;
+                background-position: center;
+                -webkit-background-size: cover;
+                background-size: cover;
+            }
+            &-date {
+                position: absolute;
+                display: block;
+                bottom: 0;
+                left: 0;
+                width: 155px;
+                height: 35px;
+                line-height: 35px;
+                background: $main_red;
+                text-align: center;
+                color: #fff;
+            }
+            &__info {
+                max-height: 250px;
+                overflow: hidden;
+            }
+            &-title {
+                position: relative;
+                display: inline-block;
+                font-size: 22px;
+                line-height: 1.3;
+                font-weight: 700;
+                margin-bottom: 15px;
+                &::after {
+                    position: absolute;
+                    display: block;
+                    left: 0;
+                    bottom: -2px;
+                    content: '';
+                    height: 2px;
+                    width: 0;
+                    background: $main_green;
+                    @include transition(all 300ms);
+                }
+            }
+            &-counter {
+                display: block;
+                font-size: 12px;
+                font-weight: 500;
+                color: $main_gray;
+                margin-bottom: 30px;
+            }
+            &-text {
+                font-size: 14px;
+            }
+        }
+    }
+    &__detail {
+        &__gallery {
+            float: left;
+            width: 650px;
+            margin-right: 90px;
+            z-index: 1;
+            .slick {
+                &-arrow {
+                    top: 50%;
+                    @include translateY(-50%);
+                    width: 40px;
+                    height: 40px;
+                    i {
+                        font-size: 30px;
+                        line-height: 40px;
+                    }
+                }
+                &-prev {
+                    left: -30px;
+                }
+                &-next {
+                    right: -30px;
+                }
+            }
+            &__item {
+                position: relative;
+                display: block;
+                width: 100%;
+                height: 510px;
+                background-repeat: no-repeat;
+                background-position: center;
+                -webkit-background-size: cover;
+                background-size: cover;
+            }
+        }
+        &__info {
+            padding-top: 20px;
+            &__footer {
+                @include display-flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+        &-date {
+            @include display-flex;
+            font-size: 18px;
+            margin-bottom: 30px;
+            i {
+                display: inline-block;
+                margin-right: 10px;
+                @extend %sprite;
+                @extend %sprite-calendar;
+            }
+        }
+        &-text {
+            @include display-flex;
+            font-size: 14px;
+            margin-bottom: 60px;
+        }
+        &-back {
+            position: relative;
+        }
+        &-counter {
+            font-size: 12px;
+            font-weight: 500;
+            color: $text_gray;
+        }
+    }
+}
+
+@media screen and (max-width: 1900px) {
+    .ipage .news__list__item {
+        padding-right: 30px;
+        &__image {
+            flex-basis: 300px;
+            min-width: 300px;
+        }
+    }
+    .ipage .news__detail__info {
+        padding-top: 0;
+    }
+}
+
+@media screen and (max-width: 1600px) {
+    .ipage .news__list__item__wraper {
+        flex-basis: 100%;
+        min-width: 100%;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .ipage .news__detail__gallery {
+        width: 400px;
+        margin-right: 70px;
+        &__item {
+            height: 450px;
+        }
+    }
+}
+
+@media screen and (max-width: 1200px) {
+}
+
+@media screen and (max-width: 992px) {
+    .ipage .news__detail__gallery {
+        float: none;
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 30px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .ipage .news__list__item {
+        display: block;
+        height: 100%;
+        padding-right: 50px;
+        &__wraper {
+        }
+        &__image {
+            height: 250px;
+            margin-right: 0;
+            margin-bottom: 40px;
+        }
+        &__info {
+            display: block;
+            max-height: none;
+        }
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .ipage .news__list__item {
+        padding: 30px;
+        &__image {
+            min-width: 220px;
+            height: 180px;
+            margin-bottom: 30px;
+        }
+        &-date {
+            font-size: 12px;
+        }
+    }
+    .ipage .news__detail__gallery__item {
+        height: 250px;
+    }
+}

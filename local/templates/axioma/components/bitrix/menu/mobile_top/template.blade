@@ -1,0 +1,43 @@
+@unless (empty($arResult))
+    @php
+        $previousLevel = 0;
+    @endphp
+    <ul class="list-unstyled mobnav__menu__wraper">
+
+        @foreach ($arResult as $arItem)
+
+            @if($previousLevel && $arItem["DEPTH_LEVEL"] < $previousLevel)
+                {!! str_repeat("</ul></li>", ($previousLevel - $arItem["DEPTH_LEVEL"])); !!}
+            @endif
+
+            @if ($arItem["IS_PARENT"])
+                <li class="mobnav__item mobnav__item__parent">
+                    <a href="{{ $arItem["LINK"] }}" class="mobnav__link mobnav__link__parent {{ $arItem["SELECTED"] ? 'selected' : '' }}">
+                        {{ $arItem["TEXT"] }}
+                        <i class="ion-chevron-down"></i>
+                    </a>
+                    <ul class="list-unstyled mobnav__sub">
+            @else
+                <li class="mobnav__item {{ $arItem['DEPTH_LEVEL'] > 1 ? 'mobnav__item__sub' : '' }}">
+                    <a href="{{ $arItem["LINK"] }}" class="mobnav__link
+                        {{$arItem['DEPTH_LEVEL'] > 1 ? 'mobnav__link__sub' : ''}}
+                        {{ $arItem["SELECTED"] ? 'selected' : '' }}"
+                    >
+                        {{ $arItem["TEXT"] }}
+                    </a>
+                </li>
+            @endif
+
+            @php
+                $previousLevel = $arItem["DEPTH_LEVEL"];
+            @endphp
+
+        @endforeach
+
+        @if ($previousLevel > 1)
+            {!! str_repeat("</ul></li>", ($previousLevel - 1)); !!}
+        @endif
+
+    </ul>
+
+@endunless

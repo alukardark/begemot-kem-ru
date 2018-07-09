@@ -1,0 +1,26 @@
+@unless (empty($arResult))
+
+    <div class="main__news">
+        <div class="main__news__header">
+            <div class="main_section_title main__news-title">Важные события</div>
+            <a href="{{ $arResult['LIST_PAGE_URL'] }}" class="main__news-all g-underline">Все новости</a>
+        </div>
+
+        <div class="main__news__content">
+            @foreach($arResult['ITEMS'] as $arItem)
+                <a href="{{ $arItem['DETAIL_PAGE_URL'] }}"
+                   id="@actionEditAndDeleteIBlockElement($arItem)" class="main__news__item">
+                    <span class="main__news__item-image"
+                          style="background-image: url({{ $arItem['PREVIEW_PICTURE']['SRC'] or NO_IMAGE }})"
+                    >
+                        <span class="main__news__item-date">{{ $arItem['DISPLAY_ACTIVE_FROM'] }}</span>
+                    </span>
+                    <span class="main__news__item-title">{{ $arItem['NAME'] }}</span>
+                    <span class="main__news__item-text">{!! $arItem['PREVIEW_TEXT'] !!}</span>
+                </a>
+            @endforeach
+        </div>
+
+    </div>
+
+@endunless

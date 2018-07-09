@@ -1,0 +1,29 @@
+@unless (empty($arResult))
+
+    <div class="sales">
+
+        <div class="sales__head" data-aos="fade">
+            {!! $arResult['DESCRIPTION'] !!}
+        </div>
+
+        @foreach($arResult['ITEMS'] as $arItem)
+            <div id="@actionEditAndDeleteIBlockElement($arItem)" class="sales__item" data-aos="fade">
+                <div class="sales__item__period">
+                    <i></i>
+                    <span>{{ $arItem['DISPLAY_PROPERTIES']['DATE_RANGE']['VALUE'] }}</span>
+                </div>
+                <div class="sales__item__booklet">
+                    @foreach($arItem['BOOKLET'] as $page)
+                        <div class="sales__item__booklet__page__wraper">
+                            <a href="{{ $page }}" data-fancybox="{{ $arItem['CODE'] }}"
+                               class="sales__item__booklet__page" style="background-image: url({{ $page }})">
+                                <span class="gallery-item-overlay"></span>
+                            </a>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        @endforeach
+    </div>
+
+@endunless
